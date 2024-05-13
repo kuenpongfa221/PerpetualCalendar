@@ -56,6 +56,13 @@
             flex-basis: calc(100% / 7);
             height: 100px;
         }
+
+        .row-solar{
+            height: 20%;
+        }
+        .row-lunar{
+            height: 80%;
+        }
     </style>
 </head>
 <body>
@@ -163,7 +170,7 @@
                 "25" => "行憲紀念日",
                 "27" => "建築師節",
                 "28" => "電信節",
-            ]  
+            ]
         ];
         //先將每一天存起來
         $days = [];
@@ -194,6 +201,14 @@
     <a href="">下一個月</a> -->
 
     <?php
+        include_once 'lunarCalendar.php';
+        $lunar = new Lunar();
+        $lunarMonth = $lunar -> convertSolarToLunar(2018, 5, 18);
+        print_r($lunarMonth);
+    ?>
+
+
+    <?php
 
         echo "<div class='container'>";
         
@@ -215,16 +230,22 @@
             foreach($days as $day){
                 $format = explode('-', $day)[2];
                 $dayMonth = explode('-', $day)[1];
+                $dayYear = explode('-', $day)[0];
                 $w = date('w', strtotime($day));
                 $isAnniversary = false;
                 $monthString = date('n', $firstDay);
+                $lunarDate = $lunar -> convertSolarToLunar($dayYear, $dayMonth, $format);
                 
                 foreach($anniversarys[$monthString] as $anniversaryDate => $anniversaryName){
                     if($anniversaryDate == $format && $month == $dayMonth){
                         if($w == 0 || $w == 6){
-                            echo "<div class='item-weekend'>$format $anniversaryName</div>";
+                            echo "<div class='item-weekend'><div class='row-solar'>$format $anniversaryName</div>" . 
+                            "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                            "</div>";
                         }else{
-                            echo "<div class='item'>$format $anniversaryName</div>";
+                            echo "<div class='item'><div class='row-solar'>$format $anniversaryName</div>" . 
+                            "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                            "</div>";
                         }
 
                         $isAnniversary = true;
@@ -232,9 +253,13 @@
                 }
                 if(!$isAnniversary){
                     if($w == 0 || $w == 6){
-                        echo "<div class='item-weekend'>$format</div>";
+                        echo "<div class='item-weekend'><div class='row-solar'>$format</div>" . 
+                             "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                             "</div>";
                     }else{
-                        echo "<div class='item'>$format</div>";
+                        echo "<div class='item'><div class='row-solar'>$format</div>" . 
+                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                        "</div>";
                     }
                 }
                 $isAnniversary = false;
