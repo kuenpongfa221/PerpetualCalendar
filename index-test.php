@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="#">
   <title>萬年曆作業</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <style>
    /*請在這裹撰寫你的CSS*/ 
   h1{
@@ -71,7 +72,8 @@
 <body>
 <h1>萬年曆</h1>  
 <!-- 測試下拉年份與下拉月份，並即時更新 -->
-<select name="months" id="monthsID" onchange="updateMonth()">
+    <select name="years" id="yearsID" onchange="updateYear()"></select>
+    <select name="months" id="monthsID" onchange="updateMonth()">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -86,15 +88,56 @@
     <option value="12">12</option>
   </select>
   <script>
+    // 測試 下拉選單修改年月
+    // 原生javascript
+
+    const date = new Date();
+    const nowYear = date.getFullYear();
+    const nowMonth = date.getMonth();
+
     function updateMonth(){
       // let website = `index-test.php?year=2024&month=${months}`;
       // window.location.href(website);
       let monthValue = document.querySelector('#monthsID').value;
-      console.log(monthValue);
-      let website = `?year=2024&month=${monthValue}`;
+      let yearValue = document.querySelector("#yearsID").value;
+    //   console.log(yearValue);
+    //   console.log(monthValue);
+      let website = `?year=${yearValue}&month=${monthValue}`;
       window.location.href = website;
       // console.log(window.location.href);
     }
+
+    function updateYear(){
+        let monthValue = document.querySelector('#monthsID').value;
+        let yearValue = document.querySelector("#yearsID").value;
+        //   console.log(yearValue);
+        //   console.log(monthValue);
+        let website = `?year=${yearValue}&month=${monthValue}`;
+        
+        window.location.href = website;
+    }
+
+    //jQuery
+    $(document).ready(function(){
+        const queryString = window.location.search;
+        // console.log(queryString);
+        const urlParams = new URLSearchParams(queryString);
+        // console.log(urlParams);
+        const selectedYear = urlParams.get('year');
+        // console.log(selectedYear);
+        const selectedMonth = urlParams.get('month');
+        // console.log(selectedMonth);
+
+        for(let i = 1900; i <= 2100; i++){
+            if( i.toString() == selectedYear){
+                $('#yearsID').append($("<option value=" + i +" selected>" + i + "</option>"));
+            }else{
+                $('#yearsID').append($("<option value=" + i +">" + i + "</option>"));
+            }
+            // $('#yearsID').append($("<option value=" + i +">" + i + "</option>"));
+        }
+        $("#monthsID").val(selectedMonth);
+    })
   </script>
 <?php
 /*請在這裹撰寫你的萬年曆程式碼*/  
@@ -106,7 +149,7 @@
         
         // 今年今月，讓now可以跳回來
         $nowYear = date('Y');
-        $nowMonth = date('m');
+        $nowMonth = date('n');
 
         echo "firstDay : $firstDay";
         echo "<br>";
@@ -184,6 +227,7 @@
                 "28" => "教師節",
             ],
             "10" => [
+                "7" => "勤永生日",
                 "10" => "國慶日",
                 "20" => "廚師節",
                 "21" => "華僑節",
