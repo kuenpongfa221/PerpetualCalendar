@@ -9,17 +9,46 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <style>
    /*請在這裹撰寫你的CSS*/ 
-  h1{
+        *{
+            box-sizing: border-box;
+            font-family: '微軟正黑體';
+            /* color: white; */
+        }
+        body{
+            width: 100%;
+            height: 80vh;
+            background-image:url('./images/star-night.jpg');
+            background-size: 100% 100vh;
+            overflow-x:hidden;
+            /* backdrop-filter: blur(100px); */
+        }
+
+        h1{
             text-align:center;
         }
 
         .container{
-            width: 80%;
-            height: 600px;
+            width: 700px;
             background-color: khaki;
             margin: auto;
         }
-
+        .year-month-deadline-container{
+            width: 100%;
+            height: 50px;
+            display:flex;
+            align-items:center;
+        }
+        .year-month-deadline-container > select{
+            width: 80px;
+            height: 32px;
+            font-size: 1.25rem;
+            text-align:center;
+            margin-left:10px;
+        }
+        .year-month-deadline-container > .chinese-year-month{
+            font-size:1.5rem;
+            font-weight: bold;
+        }
         .flex-container-change{
             height: 20px;
 
@@ -29,8 +58,6 @@
             flex-wrap: wrap;
         }
         .flex-container-calendar{
-            height: 600px;
-
             display:flex;
             justify-content: space-around;
             align-items: center;
@@ -38,7 +65,7 @@
         }
         .week{
             width: calc(100%/7);
-            height: 70px;
+            height: calc(600px / 12);
             background-color: greenyellow;
         }
         .week-text-center{
@@ -51,14 +78,14 @@
             color: ghostwhite;
 
             flex-basis: calc(100% / 7);
-            height: 100px;
+            height: calc(600px / 7);
         }
         .item-weekend{
             background-color: maroon;
             color: ghostwhite;
 
             flex-basis: calc(100% / 7);
-            height: 100px;
+            height: calc(600px / 7);
         }
 
         .row-solar{
@@ -72,7 +99,7 @@
 <body>
 <h1>萬年曆</h1>  
 <!-- 測試下拉年份與下拉月份，並即時更新 -->
-    <select name="years" id="yearsID" onchange="updateYear()"></select>
+    <!-- <select name="years" id="yearsID" onchange="updateYear()"></select>
     <select name="months" id="monthsID" onchange="updateMonth()">
     <option value="1">1</option>
     <option value="2">2</option>
@@ -86,7 +113,7 @@
     <option value="10">10</option>
     <option value="11">11</option>
     <option value="12">12</option>
-  </select>
+  </select> -->
   <script>
     // 測試 下拉選單修改年月
     // 原生javascript
@@ -119,14 +146,16 @@
 
     //jQuery
     $(document).ready(function(){
+        const date = new Date();
         const queryString = window.location.search;
         // console.log(queryString);
         const urlParams = new URLSearchParams(queryString);
         // console.log(urlParams);
-        const selectedYear = urlParams.get('year');
-        // console.log(selectedYear);
-        const selectedMonth = urlParams.get('month');
-        // console.log(selectedMonth);
+        // const selectedYear = urlParams.get('year') ? urlParams.get('year') : date.getYear();
+        const selectedYear = urlParams.get('year') ? urlParams.get('year') : date.getFullYear();
+        console.log(selectedYear);
+        const selectedMonth = urlParams.get('month') ? urlParams.get('month') : (date.getMonth() + 1);
+        console.log(selectedMonth);
 
         for(let i = 1900; i <= 2100; i++){
             if( i.toString() == selectedYear){
@@ -137,6 +166,7 @@
             // $('#yearsID').append($("<option value=" + i +">" + i + "</option>"));
         }
         $("#monthsID").val(selectedMonth);
+        $("#yearsID").val(selectedYear);
     })
   </script>
 <?php
@@ -320,14 +350,33 @@
 
         echo "<div class='container'>";
         
-            echo "<div class='flex-container-change'>";
-                echo "<a href='index-test.php?year=$lastYear&month=$month' class=''>去年</a>";
-                echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
-                echo "<a href='index-test.php?year=$prev_year&month=$prev_month' class=''>上一個月</a>";
-                echo "&ensp;&ensp;&ensp;&ensp;$year 年 $month 月</span>&ensp;&ensp;&ensp;&ensp;";
-                echo "<a href='index-test.php?year=$next_year&month=$next_month' class=''>下一個月</a>";
-                echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
-                echo "<a href='index-test.php?year=$tomorrowYear&month=$month' class=''>明年</a>";
+            // echo "<div class='flex-container-change'>";
+            //     echo "<a href='index-test.php?year=$lastYear&month=$month' class=''>去年</a>";
+            //     echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
+            //     echo "<a href='index-test.php?year=$prev_year&month=$prev_month' class=''>上一個月</a>";
+            //     echo "&ensp;&ensp;&ensp;&ensp;$year 年 $month 月</span>&ensp;&ensp;&ensp;&ensp;";
+            //     echo "<a href='index-test.php?year=$next_year&month=$next_month' class=''>下一個月</a>";
+            //     echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
+            //     echo "<a href='index-test.php?year=$tomorrowYear&month=$month' class=''>明年</a>";
+            // echo "</div>";
+            echo "<div class='year-month-deadline-container'>";
+            echo'<select name="years" id="yearsID" onchange="updateYear()"></select>';
+            echo "<div class='chinese-year-month'>年</div>";
+            echo'<select name="months" id="monthsID" onchange="updateMonth()">';
+            echo'<option value="1">1</option>';
+            echo'<option value="2">2</option>';
+            echo'<option value="3">3</option>';
+            echo'<option value="4">4</option>';
+            echo'<option value="5">5</option>';
+            echo'<option value="6">6</option>';
+            echo'<option value="7">7</option>';
+            echo'<option value="8">8</option>';
+            echo'<option value="9">9</option>';
+            echo'<option value="10">10</option>';
+            echo'<option value="11">11</option>';
+            echo'<option value="12">12</option>';
+            echo'</select>';
+            echo "<div class='chinese-year-month'>月</div>";
             echo "</div>";
 
             echo "<div class='flex-container-calendar'>";
