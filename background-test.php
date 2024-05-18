@@ -12,6 +12,8 @@
         *{
             box-sizing: border-box;
             font-family: '微軟正黑體';
+            margin: 0;
+            padding: 0; 
             /* color: white; */
         }
         body{
@@ -27,11 +29,31 @@
             text-align:center;
         }
 
-        .container{
+        .body-container{
+            width: 100%;
+            display:flex;
+            flex-direction:row;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 1. aside-left-container */
+        .aside-left-container{
+            width: 300px;
+            height: 614.22px;
+            background-color: palegreen;
+        }
+        .date-time-container{
+            width: 100%;
+            height: 20%;
+            background-color: HotPink;
+        }
+        /* 2. calendar-container */
+        .calendar-container{
             width: 700px;
             background-color: khaki;
-            margin: auto;
         }
+
+        /* year-month-deadline-container */
         .year-month-deadline-container{
             width: 100%;
             height: 50px;
@@ -49,6 +71,8 @@
             font-size:1.5rem;
             font-weight: bold;
         }
+
+        /*(deprecated) flex-container */
         .flex-container-change{
             height: 20px;
 
@@ -63,6 +87,8 @@
             align-items: center;
             flex-wrap: wrap;
         }
+
+        /* week & item */
         .week{
             width: calc(100%/7);
             height: calc(600px / 12);
@@ -88,11 +114,20 @@
             height: calc(600px / 7);
         }
 
+        /* 陽曆row row-solar */
         .row-solar{
-            height: 20%;
+            height: 45%;
         }
+        /* 陰曆row row-lunar */
         .row-lunar{
-            height: 80%;
+            height: 55%;
+        }
+
+        /* 3. aside-right-container*/
+        .aside-right-container{
+            width: 400px;
+            height: 614.22px;
+            background-color: palevioletred;
         }
   </style>
 </head>
@@ -146,7 +181,10 @@
 
     //jQuery
     $(document).ready(function(){
-        const date = new Date();
+
+        
+
+        //建立window.location.search以取得URL
         const queryString = window.location.search;
         // console.log(queryString);
         const urlParams = new URLSearchParams(queryString);
@@ -167,8 +205,21 @@
         }
         $("#monthsID").val(selectedMonth);
         $("#yearsID").val(selectedYear);
+
+        function clockTimeChange(){
+            //建立Date物件以取得現在時間
+            const date = new Date();
+            const hours = date.getHours();
+            const minutes = date.getMinutes();
+            const seconds = date.getSeconds();
+            $(".clock-text").text(`${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`);
+        }
+
+        clockTimeChange();
+        setInterval(clockTimeChange, 1000);
     })
   </script>
+
 <?php
 /*請在這裹撰寫你的萬年曆程式碼*/  
         $month = $_GET['month'] ?? date('m');
@@ -180,6 +231,7 @@
         // 今年今月，讓now可以跳回來
         $nowYear = date('Y');
         $nowMonth = date('n');
+        $nowDay = date('d');
 
         //去年與明年
         $lastYear = $year - 1;
@@ -347,190 +399,222 @@
     ?>
 
     <?php
+        echo "<div class='body-container'>";
 
-        echo "<div class='container'>";
-        
-            // echo "<div class='flex-container-change'>";
-            //     echo "<a href='index-test.php?year=$lastYear&month=$month' class=''>去年</a>";
-            //     echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
-            //     echo "<a href='index-test.php?year=$prev_year&month=$prev_month' class=''>上一個月</a>";
-            //     echo "&ensp;&ensp;&ensp;&ensp;$year 年 $month 月</span>&ensp;&ensp;&ensp;&ensp;";
-            //     echo "<a href='index-test.php?year=$next_year&month=$next_month' class=''>下一個月</a>";
-            //     echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
-            //     echo "<a href='index-test.php?year=$tomorrowYear&month=$month' class=''>明年</a>";
-            // echo "</div>";
-            echo "<div class='year-month-deadline-container'>";
-            echo'<select name="years" id="yearsID" onchange="updateYear()"></select>';
-            echo "<div class='chinese-year-month'>年</div>";
-            echo'<select name="months" id="monthsID" onchange="updateMonth()">';
-            echo'<option value="1">1</option>';
-            echo'<option value="2">2</option>';
-            echo'<option value="3">3</option>';
-            echo'<option value="4">4</option>';
-            echo'<option value="5">5</option>';
-            echo'<option value="6">6</option>';
-            echo'<option value="7">7</option>';
-            echo'<option value="8">8</option>';
-            echo'<option value="9">9</option>';
-            echo'<option value="10">10</option>';
-            echo'<option value="11">11</option>';
-            echo'<option value="12">12</option>';
-            echo'</select>';
-            echo "<div class='chinese-year-month'>月</div>";
+            // 1. aside-left-container
+            echo "<div class='aside-left-container'>";
+                echo "<div class='date-time-container'>";
+                    echo "<div class='date-row'>";
+                        echo "<div class='date-row-data'>$nowYear/$nowMonth/$nowDay</div>";
+                        echo "<div class='clock-text'></div>";
+                    // date-row的div
+                    echo "</div>";
+
+                    echo "<div class='time-row'>";
+                    // time-row的div
+                    echo "</div>";
+            //date-time-container 的 div
+                echo "</div>";
+            // aside-left-container 的 div
             echo "</div>";
 
-            echo "<div class='flex-container-calendar'>";
-                echo "<div class='week week-text-center'>日</div>";
-                echo "<div class='week week-text-center'>一</div>";
-                echo "<div class='week week-text-center'>二</div>";
-                echo "<div class='week week-text-center'>三</div>";
-                echo "<div class='week week-text-center'>四</div>";
-                echo "<div class='week week-text-center'>五</div>";
-                echo "<div class='week week-text-center'>六</div>";
+            // 2. calendar-container
+            echo "<div class='calendar-container'>";
+            
+                // echo "<div class='flex-container-change'>";
+                //     echo "<a href='index-test.php?year=$lastYear&month=$month' class=''>去年</a>";
+                //     echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
+                //     echo "<a href='index-test.php?year=$prev_year&month=$prev_month' class=''>上一個月</a>";
+                //     echo "&ensp;&ensp;&ensp;&ensp;$year 年 $month 月</span>&ensp;&ensp;&ensp;&ensp;";
+                //     echo "<a href='index-test.php?year=$next_year&month=$next_month' class=''>下一個月</a>";
+                //     echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
+                //     echo "<a href='index-test.php?year=$tomorrowYear&month=$month' class=''>明年</a>";
+                // echo "</div>";
 
-            foreach($days as $day){
+                //上方顯示年月以及結訓倒數幾天
+                echo "<div class='year-month-deadline-container'>";
+                echo'<select name="years" id="yearsID" onchange="updateYear()"></select>';
+                echo "<div class='chinese-year-month'>年</div>";
+                echo'<select name="months" id="monthsID" onchange="updateMonth()">';
+                echo'<option value="1">1</option>';
+                echo'<option value="2">2</option>';
+                echo'<option value="3">3</option>';
+                echo'<option value="4">4</option>';
+                echo'<option value="5">5</option>';
+                echo'<option value="6">6</option>';
+                echo'<option value="7">7</option>';
+                echo'<option value="8">8</option>';
+                echo'<option value="9">9</option>';
+                echo'<option value="10">10</option>';
+                echo'<option value="11">11</option>';
+                echo'<option value="12">12</option>';
+                echo'</select>';
+                echo "<div class='chinese-year-month'>月&ensp;&ensp;</div>";
+                echo "<div class='chinese-year-month'>距離結訓剩下 $diff 天</div>";
+                echo "</div>";
 
-                //format是日子，dayMonth是月份，dayYear是年分
-                $format = explode('-', $day)[2];
-                $dayMonth = explode('-', $day)[1];
-                $dayYear = explode('-', $day)[0];
-                $w = date('w', strtotime($day));
+                echo "<div class='flex-container-calendar'>";
+                    echo "<div class='week week-text-center'>日</div>";
+                    echo "<div class='week week-text-center'>一</div>";
+                    echo "<div class='week week-text-center'>二</div>";
+                    echo "<div class='week week-text-center'>三</div>";
+                    echo "<div class='week week-text-center'>四</div>";
+                    echo "<div class='week week-text-center'>五</div>";
+                    echo "<div class='week week-text-center'>六</div>";
 
-                // 判斷是不是 紀念日、陽曆假日、陰曆假日
-                $isAnniversary = false;
-                $isSolarDayOff = false;
-                $isLunarDayOff = false;
+                foreach($days as $day){
 
-                //將月份改為 string，後面的陣列會用到這個string
-                $monthString = date('n', $firstDay);
-                //陽曆轉陰曆
-                $lunarDate = $lunar -> convertSolarToLunar($dayYear, $dayMonth, $format);
-                
-                //該年陰曆有沒有閏月，(因為有閏月的話，12月在index 13，沒有就在 index 12)
-                $lunarExistLeapMonth = count($lunar->getLunarYearMonths($dayYear-1));
-                
-                if($dayMonth == "1" && $format == "1"){
-                    echo "<div class='item-weekend'><div class='row-solar'>$format 元旦</div>" . 
-                    "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                    "</div>";
+                    //format是日子，dayMonth是月份，dayYear是年分
+                    $format = explode('-', $day)[2];
+                    $dayMonth = explode('-', $day)[1];
+                    $dayYear = explode('-', $day)[0];
+                    $w = date('w', strtotime($day));
+
+                    // 判斷是不是 紀念日、陽曆假日、陰曆假日
+                    $isAnniversary = false;
+                    $isSolarDayOff = false;
+                    $isLunarDayOff = false;
+
+                    //將月份改為 string，後面的陣列會用到這個string
+                    $monthString = date('n', $firstDay);
+                    //陽曆轉陰曆
+                    $lunarDate = $lunar -> convertSolarToLunar($dayYear, $dayMonth, $format);
                     
-                    $isSolarDayOff = true;
-                }
-                if($dayMonth == "2" && $format == "28"){
-                    echo "<div class='item-weekend'><div class='row-solar'>$format 和平紀念日</div>" . 
-                    "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                    "</div>";
+                    //該年陰曆有沒有閏月，(因為有閏月的話，12月在index 13，沒有就在 index 12)
+                    $lunarExistLeapMonth = count($lunar->getLunarYearMonths($dayYear-1));
                     
-                    $isSolarDayOff = true;
-                }
-                if($dayMonth == "10" && $format == "10"){
-                    echo "<div class='item-weekend'><div class='row-solar'>$format 國慶日</div>" . 
-                    "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                    "</div>";
-                    
-                    $isSolarDayOff = true;
-                }
-
-                if($lunarExistLeapMonth == 12){
-                    //找農曆12月到底是29天還是30天，要找除夕
-                    $lunarDecemberTotalDays = $lunar->getLunarMonthDays($dayYear - 1, 12);
-                    if($lunarDecemberTotalDays == 29){
-                        if($lunarDate[1] == '臘月' && $lunarDate[2] == '廿九'){
-                            echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
-                            "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                            "</div>";
-                            
-                            $isLunarDayOff = true;
-                        }
-                    }else if($lunarDecemberTotalDays == 30){
-                        if($lunarDate[1] == '臘月' && $lunarDate[2] == '三十'){
-                            echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
-                            "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                            "</div>";
-                            
-                            $isLunarDayOff = true;
-                        }
+                    if($dayMonth == "1" && $format == "1"){
+                        echo "<div class='item-weekend'><div class='row-solar'>$format 元旦</div>" . 
+                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                        "</div>";
+                        
+                        $isSolarDayOff = true;
+                    }
+                    if($dayMonth == "2" && $format == "28"){
+                        echo "<div class='item-weekend'><div class='row-solar'>$format 和平紀念日</div>" . 
+                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                        "</div>";
+                        
+                        $isSolarDayOff = true;
+                    }
+                    if($dayMonth == "10" && $format == "10"){
+                        echo "<div class='item-weekend'><div class='row-solar'>$format 國慶日</div>" . 
+                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                        "</div>";
+                        
+                        $isSolarDayOff = true;
                     }
 
-                }
-                else if($lunarExistLeapMonth == 13){
-                    $lunarDecemberTotalDays = $lunar->getLunarMonthDays($dayYear - 1, 13);
-                    if($lunarDecemberTotalDays == 29){
-                        if($lunarDate[1] == '臘月' && $lunarDate[2] == '廿九'){
-                            echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
-                            "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                            "</div>";
-                            
-                            $isLunarDayOff = true;
-                        }
-                    }else if($lunarDecemberTotalDays == 30){
-                        if($lunarDate[1] == '臘月' && $lunarDate[2] == '三十'){
-                            echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
-                            "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                            "</div>";
-                            
-                            $isLunarDayOff = true;
-                        }
-                    }
-                }
-
-
-                if($lunarDate[1] == '正月' && $lunarDate[2] == '初一'){
-                    echo "<div class='item-weekend'><div class='row-solar'>$format 春節</div>" . 
-                    "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                    "</div>";
-                    
-                    $isLunarDayOff = true;
-                }
-
-                if($lunarDate[1] == '五月' && $lunarDate[2] == '初五'){
-                    echo "<div class='item-weekend'><div class='row-solar'>$format 端午節</div>" . 
-                    "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                    "</div>";
-                    
-                    $isLunarDayOff = true;
-                }
-
-                if($lunarDate[1] == '八月' && $lunarDate[2] == '十五'){
-                    echo "<div class='item-weekend'><div class='row-solar'>$format 中秋節</div>" . 
-                    "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                    "</div>";
-                    
-                    $isLunarDayOff = true;
-                }
-
-                if((!$isSolarDayOff) && (!$isLunarDayOff)){
-                    foreach($anniversarys[$monthString] as $anniversaryDate => $anniversaryName){
-                        if($anniversaryDate == $format && $month == $dayMonth){
-                            if($w == 0 || $w == 6){
-                                echo "<div class='item-weekend'><div class='row-solar'>$format $anniversaryName</div>" . 
+                    if($lunarExistLeapMonth == 12){
+                        //找農曆12月到底是29天還是30天，要找除夕
+                        $lunarDecemberTotalDays = $lunar->getLunarMonthDays($dayYear - 1, 12);
+                        if($lunarDecemberTotalDays == 29){
+                            if($lunarDate[1] == '臘月' && $lunarDate[2] == '廿九'){
+                                echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
+                                
+                                $isLunarDayOff = true;
+                            }
+                        }else if($lunarDecemberTotalDays == 30){
+                            if($lunarDate[1] == '臘月' && $lunarDate[2] == '三十'){
+                                echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
+                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                "</div>";
+                                
+                                $isLunarDayOff = true;
+                            }
+                        }
+
+                    }
+                    else if($lunarExistLeapMonth == 13){
+                        $lunarDecemberTotalDays = $lunar->getLunarMonthDays($dayYear - 1, 13);
+                        if($lunarDecemberTotalDays == 29){
+                            if($lunarDate[1] == '臘月' && $lunarDate[2] == '廿九'){
+                                echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
+                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                "</div>";
+                                
+                                $isLunarDayOff = true;
+                            }
+                        }else if($lunarDecemberTotalDays == 30){
+                            if($lunarDate[1] == '臘月' && $lunarDate[2] == '三十'){
+                                echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
+                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                "</div>";
+                                
+                                $isLunarDayOff = true;
+                            }
+                        }
+                    }
+
+
+                    if($lunarDate[1] == '正月' && $lunarDate[2] == '初一'){
+                        echo "<div class='item-weekend'><div class='row-solar'>$format 春節</div>" . 
+                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                        "</div>";
+                        
+                        $isLunarDayOff = true;
+                    }
+
+                    if($lunarDate[1] == '五月' && $lunarDate[2] == '初五'){
+                        echo "<div class='item-weekend'><div class='row-solar'>$format 端午節</div>" . 
+                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                        "</div>";
+                        
+                        $isLunarDayOff = true;
+                    }
+
+                    if($lunarDate[1] == '八月' && $lunarDate[2] == '十五'){
+                        echo "<div class='item-weekend'><div class='row-solar'>$format 中秋節</div>" . 
+                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                        "</div>";
+                        
+                        $isLunarDayOff = true;
+                    }
+
+                    if((!$isSolarDayOff) && (!$isLunarDayOff)){
+                        foreach($anniversarys[$monthString] as $anniversaryDate => $anniversaryName){
+                            if($anniversaryDate == $format && $month == $dayMonth){
+                                if($w == 0 || $w == 6){
+                                    echo "<div class='item-weekend'><div class='row-solar'>$format $anniversaryName</div>" . 
+                                    "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                    "</div>";
+                                }else{
+                                    echo "<div class='item'><div class='row-solar'>$format $anniversaryName</div>" . 
+                                    "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                    "</div>";
+                                }
+
+                                $isAnniversary = true;
+                            }
+                        }
+                        if(!$isAnniversary){
+                            if($w == 0 || $w == 6){
+                                echo "<div class='item-weekend'><div class='row-solar'>$format</div>" . 
+                                    "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                    "</div>";
                             }else{
-                                echo "<div class='item'><div class='row-solar'>$format $anniversaryName</div>" . 
+                                echo "<div class='item'><div class='row-solar'>$format</div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }
-
-                            $isAnniversary = true;
                         }
+                        $isAnniversary = false;
                     }
-                    if(!$isAnniversary){
-                        if($w == 0 || $w == 6){
-                            echo "<div class='item-weekend'><div class='row-solar'>$format</div>" . 
-                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                                "</div>";
-                        }else{
-                            echo "<div class='item'><div class='row-solar'>$format</div>" . 
-                            "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                            "</div>";
-                        }
-                    }
-                    $isAnniversary = false;
                 }
-            }
+                // flex-container-calendar 的 div
+                echo "</div>";
+            //calendar-container 的 div
             echo "</div>";
+
+            // 3. aside-right-container
+            echo "<div class='aside-right-container'>";
+            // aside-right-container 的 div
+            echo "</div>";
+        //body-container 的 div
         echo "</div>";
     ?>
+
 </body>
 </html>
