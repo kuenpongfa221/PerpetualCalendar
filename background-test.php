@@ -46,6 +46,12 @@
             width: 100%;
             height: 20%;
             background-color: HotPink;
+            font-size: 2rem;
+            /* text-align:center; */
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content: center;
         }
         /* 2. calendar-container */
         .calendar-container{
@@ -406,11 +412,11 @@
                 echo "<div class='date-time-container'>";
                     echo "<div class='date-row'>";
                         echo "<div class='date-row-data'>$nowYear/$nowMonth/$nowDay</div>";
-                        echo "<div class='clock-text'></div>";
-                    // date-row的div
+                        // date-row的div
                     echo "</div>";
-
+                        
                     echo "<div class='time-row'>";
+                        echo "<div class='clock-text'></div>";
                     // time-row的div
                     echo "</div>";
             //date-time-container 的 div
