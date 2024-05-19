@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <p id="test"></p>
+    <img src="./images/04.svg" alt="" />
+    <script>
+      $(document).ready(function () {
+        const date = new Date();
+        const hour = date.getHours();
+        console.log(typeof hour);
+        console.log(hour);
+
+        if (hour >= 12 && hour < 18) {
+          // 時間是 12. ~ 18.
+          $.get(
+            "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=2024-05-19T12%3A00%3A00&dataTime=2024-05-19T18%3A00%3A00",
+
+            function (res, status) {
+              const pop12h =
+                res.records.locations[0].location[0].weatherElement[0].time[0]
+                  .elementValue[0].value;
+              const wX =
+                res.records.locations[0].location[0].weatherElement[1].time[0]
+                  .elementValue[0].value;
+              const MinT =
+                res.records.locations[0].location[0].weatherElement[2].time[0]
+                  .elementValue[0].value;
+              const MaxT =
+                res.records.locations[0].location[0].weatherElement[3].time[0]
+                  .elementValue[0].value;
+              $("#test").text(pop12h + wX + MinT + MaxT);
+              console.log(res);
+            }
+          );
+        } else if (hour >= 18) {
+          // 時間是 18. ~ 6.
+          $.get(
+            "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=2024-05-19T18%3A00%3A00&dataTime=2024-05-20T06%3A00%3A00",
+
+            function (res, status) {
+              $("#test").text(res);
+              console.log(res);
+            }
+          );
+        } else {
+          // 時間是 6. ~ 18.
+          $.get(
+            "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=2024-05-20T06%3A00%3A00&dataTime=2024-05-20T18%3A00%3A00",
+
+            function (res, status) {
+              $("#test").text(res);
+              //   console.log(res);
+              console.log(res.records);
+            }
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

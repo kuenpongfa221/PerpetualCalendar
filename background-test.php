@@ -53,6 +53,53 @@
             align-items:center;
             justify-content: center;
         }
+        .weather-container{
+            width: 100%;
+            height: 53%;
+            background-color: salmon;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .weather-container > .weather-title{
+            width: 100%;
+            flex-basis: 17%;
+            background-color: khaki;
+
+            font-size: 2rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .weather-container > .weather-icon{
+            width: 100%;
+            flex-basis: 53%;
+            background-color: tomato;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .weather-container > .weather-minT-maxT{
+            width: 100%;
+            flex-basis: 15%;
+            background-color: Thistle;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .weather-container > .weather-pop12h{
+            width: 100%;
+            flex-basis: 15%;
+            background-color: lightSeaGreen;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         /* 2. calendar-container */
         .calendar-container{
             width: 700px;
@@ -140,21 +187,7 @@
 <body>
 <h1>萬年曆</h1>  
 <!-- 測試下拉年份與下拉月份，並即時更新 -->
-    <!-- <select name="years" id="yearsID" onchange="updateYear()"></select>
-    <select name="months" id="monthsID" onchange="updateMonth()">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>
-  </select> -->
+
   <script>
     // 測試 下拉選單修改年月
     // 原生javascript
@@ -189,7 +222,6 @@
     $(document).ready(function(){
 
         
-
         //建立window.location.search以取得URL
         const queryString = window.location.search;
         // console.log(queryString);
@@ -223,6 +255,76 @@
 
         clockTimeChange();
         setInterval(clockTimeChange, 1000);
+
+        //串接API，記得要執行function!!
+        function getAPI(){
+            const date = new Date();
+            const hour = date.getHours();
+            console.log(typeof hour);
+            console.log(hour);
+
+            if (hour >= 12 && hour < 18) {
+            // 時間是 12. ~ 18.
+            $.get(
+                "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=2024-05-19T12%3A00%3A00&dataTime=2024-05-19T18%3A00%3A00",
+
+                function (res, status) {
+                const pop12h =
+                    res.records.locations[0].location[0].weatherElement[0].time[0]
+                    .elementValue[0].value;
+                const wX =
+                    res.records.locations[0].location[0].weatherElement[1].time[0]
+                    .elementValue[0].value;
+                const minT =
+                    res.records.locations[0].location[0].weatherElement[2].time[0]
+                    .elementValue[0].value;
+                const maxT =
+                    res.records.locations[0].location[0].weatherElement[3].time[0]
+                    .elementValue[0].value;
+
+                    //在if外面設wXImgh才不會被 local variable吃掉!!
+                    let wXImg;
+                    console.log(wX);
+                    if(wX == '多雲時陰'){
+                        console.log("YES!!!");
+                        wXImg = ' ./images/04.svg';
+                    }
+                    // const wXImg = './images/04.svg';
+                    $(".weather-icon-img").attr("src", wXImg);
+                    $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
+                    $(".weather-pop12h").text(`降雨機率:${pop12h}`);
+                    console.log(res);
+                    console.log(wX);
+                    console.log(minT);
+                    console.log(maxT);
+                    console.log(pop12h);
+                }
+            );
+            } else if (hour >= 18) {
+            // 時間是 18. ~ 6.
+            $.get(
+                "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=2024-05-19T18%3A00%3A00&dataTime=2024-05-20T06%3A00%3A00",
+
+                function (res, status) {
+                $("#test").text(res);
+                console.log(res);
+                }
+            );
+            } else {
+            // 時間是 6. ~ 18.
+            $.get(
+                "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=2024-05-20T06%3A00%3A00&dataTime=2024-05-20T18%3A00%3A00",
+
+                function (res, status) {
+                $("#test").text(res);
+                //   console.log(res);
+                console.log(res.records);
+                }
+            );
+            }
+        }
+        getAPI();
+
     })
   </script>
 
@@ -407,7 +509,7 @@
     <?php
         echo "<div class='body-container'>";
 
-            // 1. aside-left-container
+            // 1. aside-left-container : 要包date-time-container、weather-container、todolist-container
             echo "<div class='aside-left-container'>";
                 echo "<div class='date-time-container'>";
                     echo "<div class='date-row'>";
@@ -420,6 +522,27 @@
                     // time-row的div
                     echo "</div>";
             //date-time-container 的 div
+                echo "</div>";
+
+                echo "<div class='weather-container'>";
+                    echo "<div class='weather-title'>";
+                        echo "今日天氣";
+                    // weather-title的div
+                    echo "</div>";
+                    echo "<div class='weather-icon'>";
+                        //用jq將圖片塞進來
+                        echo "<img class='weather-icon-img' src='' title='' />";
+                    // weather-icon的div
+                    echo "</div>";
+                    echo "<div class='weather-minT-maxT'>";
+                        //用jq將文字資料塞進來
+                    // weather-minT-maxT的div
+                    echo "</div>";
+                    echo "<div class='weather-pop12h'>";
+                        //用jq將文字資料塞進來
+                    // weather-pop12h的div
+                    echo "</div>";
+                //weather-container
                 echo "</div>";
             // aside-left-container 的 div
             echo "</div>";
