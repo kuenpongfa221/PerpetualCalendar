@@ -7,20 +7,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </head>
   <body>
-    <div class="text">456</div>
+    <!-- 1.原本div -> 變成 input -->
+    <!-- 2.input -> 變成 div -->
+    <!-- 3.div再度變成 -> input -->
+
+    <div class="text">789</div>
+    <!-- <div class="test-value">789</div> -->
+    <!-- <input class="blur-test" onblur="blurFunc()" value="123" /> -->
 
     <input type="text" value="" />
     <script>
-      function clickDiv(inputValue) {
+      function blurInput() {
+        inputValue = $(".text").val();
         $(".text").replaceWith(
-          `<input class='text' type='text' value='${inputValue}' onkeydown='myFunction(event)'>`
+          `<div class='text' onclick='clickDiv()'>${inputValue}</div>`
         );
       }
-      function myFunction(e) {
+      function clickDiv() {
+        inputValue = $(".text").text();
+        $(".text").replaceWith(
+          `<input class='text' type='text' value='${inputValue}' onkeydown='clickInput(event)' onblur='blurInput()'>`
+        );
+      }
+      function clickInput(e) {
         // console.log("yes!!");
-        console.log(e.key);
+        // console.log(e.key);
         const inputValue = document.querySelector(".text").value;
-        console.log(inputValue);
+        // console.log(inputValue);
 
         let text = document.querySelector(".text");
         const div = document.createElement("div");
@@ -29,21 +42,23 @@
 
         if (e.key == "Enter") {
           $(".text").replaceWith(
-            `<div class='text' onclick='clickDiv("${inputValue}")'>${inputValue}</div>`
+            `<div class='text' onclick='clickDiv()'>${inputValue}</div>`
           );
 
           //   text.classList.add("text");
           //   text.innerHTML = inputValue;
         }
         text = $(".text");
-        console.log(text);
+        // console.log(text);
         // $(".text")
       }
 
       $(document).ready(function () {
         $(".text").on("click", () => {
+          let inputValue = $(".text").text();
+          console.log(inputValue);
           $(".text").replaceWith(
-            "<input class='text' type='text' value='456' onkeydown='myFunction(event)'>"
+            `<input class='text' type='text' value='${inputValue}' onkeydown='clickInput(event)' onblur='blurInput()'>`
           );
 
           //html 的event一定要打event，不能打e
