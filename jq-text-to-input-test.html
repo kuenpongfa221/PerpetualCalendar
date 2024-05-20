@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="text">456</div>
+
+    <input type="text" value="" />
+    <script>
+      function clickDiv(inputValue) {
+        $(".text").replaceWith(
+          `<input class='text' type='text' value='${inputValue}' onkeydown='myFunction(event)'>`
+        );
+      }
+      function myFunction(e) {
+        // console.log("yes!!");
+        console.log(e.key);
+        const inputValue = document.querySelector(".text").value;
+        console.log(inputValue);
+
+        let text = document.querySelector(".text");
+        const div = document.createElement("div");
+        div.classList.add("text");
+        div.innerHTML = inputValue;
+
+        if (e.key == "Enter") {
+          $(".text").replaceWith(
+            `<div class='text' onclick='clickDiv("${inputValue}")'>${inputValue}</div>`
+          );
+
+          //   text.classList.add("text");
+          //   text.innerHTML = inputValue;
+        }
+        text = $(".text");
+        console.log(text);
+        // $(".text")
+      }
+
+      $(document).ready(function () {
+        $(".text").on("click", () => {
+          $(".text").replaceWith(
+            "<input class='text' type='text' value='456' onkeydown='myFunction(event)'>"
+          );
+
+          //html 的event一定要打event，不能打e
+          //   $(".text").attr("onkeydown", `myFunction(event)`);
+        });
+      });
+    </script>
+  </body>
+</html>
