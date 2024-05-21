@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const date = new Date();
+      console.log(date);
+      const todayYear = date.getFullYear();
+      const todayMonth = date.getMonth() + 1;
+      const todayDay = date.getDate();
+      //   console.log(todayYear, todayMonth, todayDay);
+      const todayDate = [todayYear, todayMonth, todayDay].join("-");
+      //   console.log(todayDate);
+
+      const tomorrow = date.setDate(todayDay + 1);
+      const tomorrowDateObject = new Date(tomorrow);
+      const tomorrowYear = tomorrowDateObject.getFullYear();
+      const tomorrowMonth = tomorrowDateObject.getMonth() + 1;
+      const tomorrowDay = tomorrowDateObject.getDate();
+      const tomorrowDate = [tomorrowYear, tomorrowMonth, tomorrowDay].join("-");
+      console.log(tomorrowDate);
+    </script>
+  </body>
+</html>

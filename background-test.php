@@ -100,6 +100,13 @@
             justify-content: center;
             align-items: center;
         }
+        .todolist-container{
+            width: 100%;
+            height: 27%;
+        }
+        .todolist-container > .todolist-title{
+            
+        }
         /* 2. calendar-container */
         .calendar-container{
             width: 700px;
@@ -301,14 +308,32 @@
         //串接API，記得要執行function!!
         function getAPI(){
             const date = new Date();
+            //計算現在幾點，調整預報參數
             const hour = date.getHours();
-            // console.log(typeof hour);
-            // console.log(hour);
+            console.log(date);
+            const todayYear = date.getFullYear();
+            const todayMonth = (date.getMonth() + 1).toString().padStart(2, 0);
+            const todayDay = date.getDate();
+            //   console.log(todayYear, todayMonth, todayDay);
+
+            //今天日期string todayDate
+            const todayDate = [todayYear, todayMonth, todayDay].join("-");
+              console.log(todayDate);
+
+            const tomorrow = date.setDate(todayDay + 1);
+            const tomorrowDateObject = new Date(tomorrow);
+            const tomorrowYear = tomorrowDateObject.getFullYear();
+            const tomorrowMonth = (tomorrowDateObject.getMonth() + 1).toString().padStart(2, 0);
+            const tomorrowDay = tomorrowDateObject.getDate();
+
+            //明天日期 string tomorrowDate
+            const tomorrowDate = [tomorrowYear, tomorrowMonth, tomorrowDay].join("-");
+            console.log(tomorrowDate);
 
             if (hour >= 12 && hour < 18) {
             // 時間是 12. ~ 18.
             $.get(
-                "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=2024-05-19T12%3A00%3A00&dataTime=2024-05-19T18%3A00%3A00",
+                `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T12%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
 
                 function (res, status) {
                     const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
@@ -355,7 +380,7 @@
             } else if (hour >= 18) {
             // 時間是 18. ~ 6.
             $.get(
-                "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=2024-05-19T18%3A00%3A00&dataTime=2024-05-20T06%3A00%3A00",
+                `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T18%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
                     function (res, status) {
                         const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
                         const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
@@ -406,7 +431,7 @@
             } else {
             // 時間是 6. ~ 18.
             $.get(
-                "https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=2024-05-20T06%3A00%3A00&dataTime=2024-05-20T18%3A00%3A00",
+                `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T06%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
 
                 function (res, status) {
                     const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
@@ -677,7 +702,16 @@
                         //用jq將文字資料塞進來
                     // weather-pop12h的div
                     echo "</div>";
-                //weather-container
+                //weather-container的div
+                echo "</div>";
+
+
+                echo "<div class='todolist-container'>";
+                    echo "<h3 class='todolist-title'>代辦事項:</h3>";
+                    echo "<div class='todolist-row'>1. <div class='todolist-item-1'></div></div>";
+                    echo "<div class='todolist-row'>2. <div class='todolist-item-2'></div></div>";
+                    echo "<div class='todolist-row'>3. <div class='todolist-item-3'></div></div>";
+                //todolist-container的div
                 echo "</div>";
             // aside-left-container 的 div
             echo "</div>";
