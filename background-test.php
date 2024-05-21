@@ -107,6 +107,9 @@
         .todolist-container > .todolist-title{
             
         }
+        .todolist-container > .todolist-row{
+            display:flex;
+        }
         /* 2. calendar-container */
         .calendar-container{
             width: 700px;
@@ -708,9 +711,9 @@
 
                 echo "<div class='todolist-container'>";
                     echo "<h3 class='todolist-title'>代辦事項:</h3>";
-                    echo "<div class='todolist-row'>1. <div class='todolist-item-1'></div></div>";
-                    echo "<div class='todolist-row'>2. <div class='todolist-item-2'></div></div>";
-                    echo "<div class='todolist-row'>3. <div class='todolist-item-3'></div></div>";
+                    echo "<div class='todolist-row'>1. <div class='todolist-item-1'>寫php</div></div>";
+                    echo "<div class='todolist-row'>2. <div class='todolist-item-2'>練習sql</div></div>";
+                    echo "<div class='todolist-row'>3. <div class='todolist-item-3'>學習ps</div></div>";
                 //todolist-container的div
                 echo "</div>";
             // aside-left-container 的 div
@@ -914,5 +917,6 @@
         echo "</div>";
     ?>
 
+<script src="jq-text-to-input-test.js"></script>
 </body>
 </html>
