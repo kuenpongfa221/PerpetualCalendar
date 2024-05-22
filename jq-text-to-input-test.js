@@ -10,36 +10,24 @@
 // }
 function clickDiv(e) {
   // console.log(e);
-  let input = e.target;
+  let input = e.srcElement;
   let inputValue = input.innerHTML;
-  console.log(inputValue);
-  $(input).replaceWith(
-    // `<input class='todolist-item-1' type='text' value='${inputValue}' onkeydown='clickInput(event)' onblur='blurInput()'>`
+  let jqInput = $(input);
+  console.log(jqInput);
+  jqInput.replaceWith(
     `<input class=${input.className} type='text' value='${inputValue}' onkeydown='clickInput(event)'>`
   );
 
-  $(".todolist-item-1").on("click", () => {
-    let input = $(".todolist-item-1");
-    $(".todolist-item-1").replaceWith(
-      // `<input class='todolist-item-1' type='text' value='${input.text()}' onkeydown='clickInput(event, ${input}, ${class_name})'   />`
-      `<input class='todolist-item-1' type='text' value='${input.text()}' onkeypress='clickInput(event)'   />`
+  jqInput = $(".todolist-item-1");
+  jqInput.focus();
+  jqInput.val("");
+  jqInput.val(inputValue);
+
+  jqInput.on("blur", ()=>{
+    jqInput.replaceWith(
+      `<div class=${jqInput.attr('class')} onclick='clickDiv(event)'>${jqInput.val()}</div>`
     );
-
-    $(".todolist-item-1").focus();
-    $(".todolist-item-1").val("");
-    $(".todolist-item-1").val(input.text());
-
-    $(".todolist-item-1").on("blur", () => {
-      input = $(".todolist-item-1");
-      // console.log(e);
-      // console.log(inputValue);
-      $(".todolist-item-1").replaceWith(
-        `<div class='todolist-item-1' onclick='clickDiv(event)'>${input.val()}</div>`
-      );
-    });
-    //html 的event一定要打event，不能打e
-    //   $(".text").attr("onkeydown", `myFunction(event)`);
-  });
+  })
 }
 function clickInput(e) {
   // console.log("yes!!");
