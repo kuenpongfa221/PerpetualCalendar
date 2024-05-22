@@ -239,9 +239,9 @@
         // console.log(urlParams);
         // const selectedYear = urlParams.get('year') ? urlParams.get('year') : date.getYear();
         const selectedYear = urlParams.get('year') ? urlParams.get('year') : date.getFullYear();
-        console.log(selectedYear);
+        // console.log(selectedYear);
         const selectedMonth = urlParams.get('month') ? urlParams.get('month') : (date.getMonth() + 1);
-        console.log(selectedMonth);
+        // console.log(selectedMonth);
 
         for(let i = 1900; i <= 2100; i++){
             if( i.toString() == selectedYear){
@@ -313,7 +313,7 @@
             const date = new Date();
             //計算現在幾點，調整預報參數
             const hour = date.getHours();
-            console.log(date);
+            // console.log(date);
             const todayYear = date.getFullYear();
             const todayMonth = (date.getMonth() + 1).toString().padStart(2, 0);
             const todayDay = date.getDate();
@@ -321,7 +321,7 @@
 
             //今天日期string todayDate
             const todayDate = [todayYear, todayMonth, todayDay].join("-");
-              console.log(todayDate);
+            //   console.log(todayDate);
 
             const tomorrow = date.setDate(todayDay + 1);
             const tomorrowDateObject = new Date(tomorrow);
@@ -331,7 +331,7 @@
 
             //明天日期 string tomorrowDate
             const tomorrowDate = [tomorrowYear, tomorrowMonth, tomorrowDay].join("-");
-            console.log(tomorrowDate);
+            // console.log(tomorrowDate);
 
             if (hour >= 12 && hour < 18) {
             // 時間是 12. ~ 18.
@@ -443,7 +443,7 @@
                     const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
                     //在if外面設wXImgh才不會被 local variable吃掉!!
                     let wXImg;
-                    console.log(wX);
+                    // console.log(wX);
                     switch(wX){
                         case '多雲':
                             wXImg = './images/04.svg';
@@ -476,12 +476,12 @@
                     $(".weather-icon-img").attr("src", wXImg);
                     $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
                     $(".weather-pop12h").text(`降雨機率:${pop12h}`);
-                            console.log(res);
-                            console.log(wX);
-                            console.log(minT);
-                            console.log(maxT);
-                            console.log(pop12h);
-                        console.log(res.records);
+                        //     console.log(res);
+                        //     console.log(wX);
+                        //     console.log(minT);
+                        //     console.log(maxT);
+                        //     console.log(pop12h);
+                        // console.log(res.records);
                 }
             );
             }
