@@ -312,34 +312,37 @@
             const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
             //在if外面設wXImgh才不會被 local variable吃掉!!
             let wXImg;
-            console.log(wX);
+            // console.log(wX);
             switch(wX){
                 case '多雲':
                     wXImg = './images/04.svg';
                     break;
                 case '多雲':
-                    wxImg = './images/04.svg';
+                    wXImg = './images/04.svg';
                     break;
                 case '多雲時陰':
-                    wxImg = './images/05.svg';
+                    wXImg = './images/05.svg';
                     break;
                 case '陰天':
-                    wxImg = './images/07.svg';
+                    wXImg = './images/07.svg';
                     break;
                 case '多雲時陰短暫陣雨':
-                    wxImg = './images/09.svg';
+                    wXImg = './images/09.svg';
+                    break;
+                case '陰短暫陣雨':
+                    wXImg = './images/11.svg';
                     break;
                 case '陰時多雲短暫陣雨或雷雨':
-                    wxImg = './images/17.svg';
+                    wXImg = './images/17.svg';
                     break;
                 case '陰短暫陣雨或雷雨':
-                    wxImg = './images/18.svg';
+                    wXImg = './images/18.svg';
                     break;
                 case '多雲午後短暫雷陣雨':
-                    wxImg = './images/22.svg';
+                    wXImg = './images/22.svg';
                     break;
                 default:
-                    wxImg = './images/weatherToBeAdd.png';
+                    wXImg = './images/weatherToBeAdd.png';
                     break;
             }
             $(".weather-icon-img").attr("src", wXImg);
@@ -377,8 +380,10 @@
                 `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T12%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
 
                 function (res, status) {
+                    
                     const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
                     const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
+                    console.log(wX);
                     const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
                     const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
                     //在if外面設wXImgh才不會被 local variable吃掉!!
@@ -399,6 +404,9 @@
                             break;
                         case '多雲時陰短暫陣雨':
                             wXImg = './images/09.svg';
+                            break;
+                        case '陰短暫陣雨':
+                            wXImg = './images/11.svg';
                             break;
                         case '陰時多雲短暫陣雨或雷雨':
                             wXImg = './images/17.svg';
@@ -445,6 +453,9 @@
                                 break;
                             case '多雲時陰短暫陣雨':
                                 wXImg = './images/09.svg';
+                                break;
+                            case '陰短暫陣雨':
+                                wXImg = './images/11.svg';
                                 break;
                             case '陰時多雲短暫陣雨或雷雨':
                                 wXImg = './images/17.svg';
@@ -497,6 +508,9 @@
                                 case '多雲時陰短暫陣雨':
                                     wXImg = './images/09.svg';
                                     break;
+                                case '陰短暫陣雨':
+                                    wXImg = './images/11.svg';
+                                    break;
                                 case '陰時多雲短暫陣雨或雷雨':
                                     wXImg = './images/17.svg';
                                     break;
@@ -548,6 +562,9 @@
                             break;
                         case '多雲時陰短暫陣雨':
                             wXImg = './images/09.svg';
+                            break;
+                        case '陰短暫陣雨':
+                            wXImg = './images/11.svg';
                             break;
                         case '陰時多雲短暫陣雨或雷雨':
                             wXImg = './images/17.svg';
