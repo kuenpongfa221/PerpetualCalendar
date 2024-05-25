@@ -230,6 +230,53 @@
             height: 614.22px;
             background-color: palevioletred;
         }
+        .aside-right-content-container{
+            width:90%;
+            height: 100%;
+            border: 2px double khaki;
+            margin: auto;
+        }
+        .today-fortune{
+            border: 2px double lawngreen;
+            width: auto;
+            height: 57px;
+            margin-top: 10px;
+
+            font-size: 2.5rem;
+
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .display-card{
+            border: 2px double lawngreen;
+            width: 100%;
+            height: 32%;
+            margin-top: 20px;
+        }
+        .tarots{
+            border: 2px double lawngreen;
+            width: 100%;
+            height: 42%;
+            margin-top: 20px;
+        }
+        .shuffle-container{
+            border: 2px double lawngreen;
+            width: 100%;
+            height: calc(614.22px - 74% - 110px);
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .shuffle{
+            width: 75px;
+            height: 35px;
+
+            border: 1px solid black;
+            border-radius: 10px;
+        }
   </style>
 </head>
 <body>
@@ -374,7 +421,7 @@
             const tomorrowDate = [tomorrowYear, tomorrowMonth, tomorrowDay].join("-");
             // console.log(tomorrowDate);
 
-            if (hour >= 12 && hour < 18) {
+            if (hour >= 11 && hour < 18) {
             // 時間是 12. ~ 18.
             $.get(
                 `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T12%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
@@ -401,6 +448,9 @@
                             break;
                         case '陰天':
                             wXImg = './images/07.svg';
+                            break;
+                        case '多雲短暫陣雨':
+                            wXImg = './images/08.svg';
                             break;
                         case '多雲時陰短暫陣雨':
                             wXImg = './images/09.svg';
@@ -450,6 +500,9 @@
                                 break;
                             case '陰天':
                                 wXImg = './images/07.svg';
+                                break;
+                            case '多雲短暫陣雨':
+                                wXImg = './images/08.svg';
                                 break;
                             case '多雲時陰短暫陣雨':
                                 wXImg = './images/09.svg';
@@ -504,6 +557,9 @@
                                     break;
                                 case '陰天':
                                     wXImg = './images/07.svg';
+                                    break;
+                                case '多雲短暫陣雨':
+                                    wXImg = './images/08.svg';
                                     break;
                                 case '多雲時陰短暫陣雨':
                                     wXImg = './images/09.svg';
@@ -560,6 +616,9 @@
                         case '陰天':
                             wXImg = './images/07.svg';
                             break;
+                        case '多雲短暫陣雨':
+                            wXImg = './images/08.svg';
+                            break;
                         case '多雲時陰短暫陣雨':
                             wXImg = './images/09.svg';
                             break;
@@ -580,6 +639,8 @@
                             break;
                     }
                     $(".weather-icon-img").attr("src", wXImg);
+                    // $(".weather-icon-img").attr('width', '200px');
+                    // $(".weather-icon-img").attr('height', '150px');
                     $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
                     $(".weather-pop12h").text(`降雨機率:${pop12h}`);
                         //     console.log(res);
@@ -1117,7 +1178,13 @@
 
             // 4. aside-right-container
             echo "<div class='aside-right-container'>";
-
+                echo "<div class='aside-right-content-container'>";
+                    echo "<div class='today-fortune'>本日運勢</div>";
+                    echo "<div class='display-card'></div>";
+                    echo "<div class='tarots'></div>";
+                    echo "<div class='shuffle-container'><button class='shuffle'>洗牌</button></div>";
+                // aside-right-content-container 的 div
+                echo "</div>";
             // aside-right-container 的 div
             echo "</div>";
         //body-container 的 div
