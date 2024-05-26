@@ -260,8 +260,8 @@
             align-items: center;
         }
         .display-card > .target{
-            width: 80px;
-            height: 120px;
+            width: 51px;
+            height: 80px;
             display: flex;
             border: 2px solid black;
         }
@@ -271,24 +271,26 @@
             height: 42%;
             margin-top: 20px;
 
-            positon: relative;
+            position: relative;
 
-            display: flex;
+            /* display: flex;
             justify-content: space-around;
-            flex-wrap:wrap;
+            flex-wrap:wrap; */
         }
         .tarot-image{
             width: 51px;
             height: 80px;
 
-            display: flex;
+            position: absolute;
+
+            /* display: flex;
             align-items: center;
             justify-content: space-around;
-            flex-wrap: wrap;
+            flex-wrap: wrap; */
         }
         .tarot-image:hover{
             transition: all 0.5s ease;
-            bottom: 10px;
+            transform: translateY(-10px);
         }
         .tarot-image > img{
             width: 100%;
@@ -403,6 +405,9 @@
                 case '多雲時陰':
                     wXImg = './images/05.svg';
                     break;
+                case '陰時多雲':
+                    wXImg = './images/06.svg';
+                    break;
                 case '陰天':
                     wXImg = './images/07.svg';
                     break;
@@ -412,6 +417,9 @@
                 case '陰短暫陣雨':
                     wXImg = './images/11.svg';
                     break;
+                case '多雲時陰短暫陣雨或雷雨':
+                    wXImg = './images/16.svg';
+                     break;
                 case '陰時多雲短暫陣雨或雷雨':
                     wXImg = './images/17.svg';
                     break;
@@ -479,6 +487,9 @@
                         case '多雲時陰':
                             wXImg = './images/05.svg';
                             break;
+                        case '陰時多雲':
+                            wXImg = './images/06.svg';
+                            break;
                         case '陰天':
                             wXImg = './images/07.svg';
                             break;
@@ -490,6 +501,9 @@
                             break;
                         case '陰短暫陣雨':
                             wXImg = './images/11.svg';
+                            break;
+                        case '多雲時陰短暫陣雨或雷雨':
+                            wXImg = './images/16.svg';
                             break;
                         case '陰時多雲短暫陣雨或雷雨':
                             wXImg = './images/17.svg';
@@ -531,6 +545,9 @@
                             case '多雲時陰':
                                 wXImg = './images/05.svg';
                                 break;
+                            case '陰時多雲':
+                                wXImg = './images/06.svg';
+                                break;
                             case '陰天':
                                 wXImg = './images/07.svg';
                                 break;
@@ -542,6 +559,9 @@
                                 break;
                             case '陰短暫陣雨':
                                 wXImg = './images/11.svg';
+                                break;
+                            case '多雲時陰短暫陣雨或雷雨':
+                                wXImg = './images/16.svg';
                                 break;
                             case '陰時多雲短暫陣雨或雷雨':
                                 wXImg = './images/17.svg';
@@ -600,6 +620,9 @@
                                 case '陰短暫陣雨':
                                     wXImg = './images/11.svg';
                                     break;
+                                case '多雲時陰短暫陣雨或雷雨':
+                                    wXImg = './images/16.svg';
+                                    break;
                                 case '陰時多雲短暫陣雨或雷雨':
                                     wXImg = './images/17.svg';
                                     break;
@@ -646,6 +669,9 @@
                         case '多雲時陰':
                             wXImg = './images/05.svg';
                             break;
+                        case '陰時多雲':
+                            wXImg = './images/06.svg';
+                            break;
                         case '陰天':
                             wXImg = './images/07.svg';
                             break;
@@ -657,6 +683,9 @@
                             break;
                         case '陰短暫陣雨':
                             wXImg = './images/11.svg';
+                            break;
+                        case '多雲時陰短暫陣雨或雷雨':
+                            wXImg = './images/16.svg';
                             break;
                         case '陰時多雲短暫陣雨或雷雨':
                             wXImg = './images/17.svg';
