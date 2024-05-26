@@ -254,12 +254,45 @@
             width: 100%;
             height: 32%;
             margin-top: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .display-card > .target{
+            width: 80px;
+            height: 120px;
+            display: flex;
+            border: 2px solid black;
         }
         .tarots{
             border: 2px double lawngreen;
             width: 100%;
             height: 42%;
             margin-top: 20px;
+
+            positon: relative;
+
+            display: flex;
+            justify-content: space-around;
+            flex-wrap:wrap;
+        }
+        .tarot-image{
+            width: 51px;
+            height: 80px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .tarot-image:hover{
+            transition: all 0.5s ease;
+            bottom: 10px;
+        }
+        .tarot-image > img{
+            width: 100%;
+            height: 100%;
         }
         .shuffle-container{
             border: 2px double lawngreen;
@@ -1192,5 +1225,6 @@
     ?>
 
 <script src="jq-text-to-input-test.js"></script>
+<script src="jq-today-fortune-tarot.js"></script>
 </body>
 </html>
