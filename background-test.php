@@ -301,34 +301,37 @@
             width: 51px;
             height: 82px;
             position:absolute;
-            background-image:url(./images/tarotBack.jpg);
+            /* background-image:url(./images/tarotBack.jpg); */
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             backface-visibility: hidden;
         }
-        /* .tarot-image-back > img{
+        .tarot-image-back > img{
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
-        } */
+        }
         .tarot-image > .tarot-image-front{
             width: 100%;
             height: 100%;
             position: absolute;
-            background-image: url(./images/tarot/wands01.jpg);
+            /* background-image: url(./images/tarot/wands01.jpg); */
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
             backface-visibility: hidden;
             transform: rotateY(180deg);
         }
-        /* .tarot-image-front > img{
+        .tarot-image-front > img{
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
+            /* backface-visibility: hidden;
+            transform: rotateY(180deg); */
+        }
+        .tarot-card-close{
             transform: rotateY(180deg);
-        } */
+        }
         .shuffle-container{
             border: 2px double lawngreen;
             width: 100%;

@@ -13,21 +13,21 @@ $(document).ready(function () {
   // 新增每一張tarot(背面)
   // 目前第20行的image會讓版面跑掉，必要的時候先刪掉測試一下
   for (let i = 0; i < 15; i++) {
-    // tarots.append(`
-    // <div class='tarot-image'>
-    //   <div class='tarot-image-front'></div>
-    //   <div class='tarot-image-back'>
-    //     <img src='./images/tarotBack.jpg' alt='tarot'/>
-    //   </div>
-    // </div>
-    // `);
-
     tarots.append(`
     <div class='tarot-image'>
       <div class='tarot-image-front'></div>
-      <div class='tarot-image-back'></div>
+      <div class='tarot-image-back'>
+        <img src='./images/tarotBack.jpg' alt='tarot'/>
+      </div>
     </div>
     `);
+
+    // tarots.append(`
+    // <div class='tarot-image tarot-card-close'>
+    //   <div class='tarot-image-front'></div>
+    //   <div class='tarot-image-back'></div>
+    // </div>
+    // `);
   }
 
   //設定每一張tarot的位置
@@ -64,8 +64,16 @@ $(document).ready(function () {
     thisObject.css("transform", `translate(${distanceX}px, ${distanceY}px)`);
 
     //給予thisObject正面的牌
-    // thisObject.children('.tarot-image-front').append(`
-    //   <img src='./images/tarot/wands01.jpg' />
-    // `);
+    thisObject.children(".tarot-image-front").append(`
+      <img src='./images/tarot/wands01.jpg' />
+    `);
+
+    setTimeout(() => {
+      // thisObject.removeClass("tarot-card-close");
+      thisObject.css(
+        "transform",
+        `translate(${distanceX}px, ${distanceY}px) rotateY(180deg)`
+      );
+    }, 400);
   });
 });
