@@ -283,6 +283,8 @@
 
             position: absolute;
 
+            /* 設定子元素在 3D 空間內 */
+            transform-style: preserve-3d;
             /* display: flex;
             align-items: center;
             justify-content: space-around;
@@ -291,11 +293,40 @@
         .tarot-image:hover{
             transition: all 0.5s ease;
             transform: translateY(-10px);
+            cursor: pointer;
         }
-        .tarot-image > img{
+        .tarot-image > .tarot-image-back{
+            /* width: 100%;
+            height: 100%; */
+            width: 51px;
+            height: 82px;
+            background-image:url(./images/tarotBack.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            backface-visibility: hidden;
+        }
+        /* .tarot-image-back > img{
             width: 100%;
             height: 100%;
+            backface-visibility: hidden;
+        } */
+        .tarot-image > .tarot-image-front{
+            width: 100%;
+            height: 100%;
+            background-image: url(./images/tarot/wands01.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            /* backface-visibility: hidden; */
+            transform: rotateY(180deg);
         }
+        /* .tarot-image-front > img{
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+        } */
         .shuffle-container{
             border: 2px double lawngreen;
             width: 100%;
@@ -414,6 +445,9 @@
                 case '多雲時陰短暫陣雨':
                     wXImg = './images/09.svg';
                     break;
+                case '多雲短暫陣雨或雷雨':
+                    wXImg = './images/15.svg';
+                    break;
                 case '陰短暫陣雨':
                     wXImg = './images/11.svg';
                     break;
@@ -502,6 +536,9 @@
                         case '陰短暫陣雨':
                             wXImg = './images/11.svg';
                             break;
+                        case '多雲短暫陣雨或雷雨':
+                            wXImg = './images/15.svg';
+                            break;
                         case '多雲時陰短暫陣雨或雷雨':
                             wXImg = './images/16.svg';
                             break;
@@ -559,6 +596,9 @@
                                 break;
                             case '陰短暫陣雨':
                                 wXImg = './images/11.svg';
+                                break;
+                            case '多雲短暫陣雨或雷雨':
+                                wXImg = './images/15.svg';
                                 break;
                             case '多雲時陰短暫陣雨或雷雨':
                                 wXImg = './images/16.svg';
@@ -619,6 +659,9 @@
                                     break;
                                 case '陰短暫陣雨':
                                     wXImg = './images/11.svg';
+                                    break;
+                                case '多雲短暫陣雨或雷雨':
+                                    wXImg = './images/15.svg';
                                     break;
                                 case '多雲時陰短暫陣雨或雷雨':
                                     wXImg = './images/16.svg';
@@ -683,6 +726,9 @@
                             break;
                         case '陰短暫陣雨':
                             wXImg = './images/11.svg';
+                            break;
+                        case '多雲短暫陣雨或雷雨':
+                            wXImg = './images/15.svg';
                             break;
                         case '多雲時陰短暫陣雨或雷雨':
                             wXImg = './images/16.svg';
