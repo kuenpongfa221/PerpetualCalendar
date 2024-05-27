@@ -1,3 +1,10 @@
+// import { allTarots } from "./jq-all-tarot-cards";
+
+// $.getScript("jq-all-tarot-cards.js", function (data) {
+//   alert("Script loaded but not necessarily executed.");
+//   console.log(data);
+// });
+
 $(document).ready(function () {
   const displayCard = $(".display-card");
   const tarots = $(".tarots");
@@ -64,8 +71,11 @@ $(document).ready(function () {
     thisObject.css("transform", `translate(${distanceX}px, ${distanceY}px)`);
 
     //給予thisObject正面的牌
+    // thisObject.children(".tarot-image-front").append(`
+    //   <img src='./images/tarot/wands01.jpg' />
+    // `);
     thisObject.children(".tarot-image-front").append(`
-      <img src='./images/tarot/wands01.jpg' />
+    <img src='${allTarots[1].img}' />
     `);
 
     setTimeout(() => {

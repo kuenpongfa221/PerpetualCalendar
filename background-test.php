@@ -1305,6 +1305,7 @@
     ?>
 
 <script src="jq-text-to-input-test.js"></script>
+<script src="jq-all-tarot-cards.js"></script>
 <script src="jq-today-fortune-tarot.js"></script>
 </body>
 </html>
