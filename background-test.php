@@ -300,6 +300,7 @@
             height: 100%; */
             width: 51px;
             height: 82px;
+            position:absolute;
             background-image:url(./images/tarotBack.jpg);
             background-size: contain;
             background-repeat: no-repeat;
@@ -314,11 +315,12 @@
         .tarot-image > .tarot-image-front{
             width: 100%;
             height: 100%;
+            position: absolute;
             background-image: url(./images/tarot/wands01.jpg);
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            /* backface-visibility: hidden; */
+            backface-visibility: hidden;
             transform: rotateY(180deg);
         }
         /* .tarot-image-front > img{

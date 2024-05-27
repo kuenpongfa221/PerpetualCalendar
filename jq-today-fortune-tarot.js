@@ -13,12 +13,19 @@ $(document).ready(function () {
   // 新增每一張tarot(背面)
   // 目前第20行的image會讓版面跑掉，必要的時候先刪掉測試一下
   for (let i = 0; i < 15; i++) {
+    // tarots.append(`
+    // <div class='tarot-image'>
+    //   <div class='tarot-image-front'></div>
+    //   <div class='tarot-image-back'>
+    //     <img src='./images/tarotBack.jpg' alt='tarot'/>
+    //   </div>
+    // </div>
+    // `);
+
     tarots.append(`
     <div class='tarot-image'>
       <div class='tarot-image-front'></div>
-      <div class='tarot-image-back'>
-        <img src='./images/tarotBack.jpg' alt='tarot'/>
-      </div>
+      <div class='tarot-image-back'></div>
     </div>
     `);
   }
@@ -39,10 +46,10 @@ $(document).ready(function () {
   });
 
   //按一下塔羅牌會移動到目標位置，並且settimeout再翻牌
-  $(".tarot-image").on("click", function(){
+  $(".tarot-image").on("click", function () {
     const thisObject = $(this);
     // console.log(thisObject);
-    const target = $('.target');
+    const target = $(".target");
 
     // 獲取目標物體的位置
     const targetPosition = target.position();
@@ -55,11 +62,10 @@ $(document).ready(function () {
     console.log("distanceX: " + distanceX + "  distanceY: " + distanceY);
     //移動到目標位置
     thisObject.css("transform", `translate(${distanceX}px, ${distanceY}px)`);
-    
+
     //給予thisObject正面的牌
     // thisObject.children('.tarot-image-front').append(`
     //   <img src='./images/tarot/wands01.jpg' />
     // `);
-    
-  })
+  });
 });
