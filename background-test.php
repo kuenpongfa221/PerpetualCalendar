@@ -252,23 +252,45 @@
         .display-card{
             border: 2px double lawngreen;
             width: 100%;
-            height: 32%;
+            height: 46%;
             margin-top: 20px;
 
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
         .display-card > .target{
-            width: 51px;
-            height: 80px;
+            width: 102px;
+            height: 160px;
             display: flex;
             border: 2px solid black;
+            margin-top: 10px;
+        }
+        .display-card > .daily-tarot > a{
+            text-decoration: none;
+            color: black;
+            font-size: 1.25rem;
+        }
+        .display-card > .daily-tarot > a:hover{
+            text-decoration: none;
+            color: red;
+            font-size: 1.25rem;
+        }
+        .display-card > .nes-tarot > a{
+            text-decoration: none;
+            color: black;
+            font-size: 1rem;
+        }
+        .display-card > .nes-tarot > a:hover{
+            text-decoration: none;
+            color: red;
+            font-size: 1rem;
         }
         .tarots{
             border: 2px double lawngreen;
             width: 100%;
-            height: 42%;
+            height: 28%;
             margin-top: 20px;
 
             position: relative;

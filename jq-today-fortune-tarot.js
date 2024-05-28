@@ -19,7 +19,7 @@ $(document).ready(function () {
   let count = 1;
   // 新增每一張tarot(背面)
   // 目前第20行的image會讓版面跑掉，必要的時候先刪掉測試一下
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 10; i++) {
     tarots.append(`
     <div class='tarot-image'>
       <div class='tarot-image-front'></div>
@@ -64,26 +64,42 @@ $(document).ready(function () {
     const thisObjectPosition = this.getBoundingClientRect();
     console.log(this.getBoundingClientRect());
     // 計算目標物體位置相對於點擊物體的距離
-    const distanceX = targetPosition.left - thisObjectPosition.left;
-    const distanceY = targetPosition.top - thisObjectPosition.top - 10;
+    const distanceX = targetPosition.left - 51 - thisObjectPosition.left;
+    const distanceY = targetPosition.top - 23 - thisObjectPosition.top;
     console.log("distanceX: " + distanceX + "  distanceY: " + distanceY);
     //移動到目標位置
     thisObject.css("transform", `translate(${distanceX}px, ${distanceY}px)`);
+    // thisObject.css("top", `${targetPosition.top - 10}px`);
+    // thisObject.css("left", `${targetPosition.left}px`);
 
     //給予thisObject正面的牌
     // thisObject.children(".tarot-image-front").append(`
     //   <img src='./images/tarot/wands01.jpg' />
     // `);
+    const randomCardIndex = Math.floor(Math.random() * 4);
     thisObject.children(".tarot-image-front").append(`
-    <img src='${allTarots[1].img}' />
+    <img src='${allTarots[randomCardIndex].img}' />
     `);
 
     setTimeout(() => {
       // thisObject.removeClass("tarot-card-close");
       thisObject.css(
+        "transform-origin",
+        "top right"
+      )
+      thisObject.css(
         "transform",
-        `translate(${distanceX}px, ${distanceY}px) rotateY(180deg)`
+        `translate(${distanceX}px, ${distanceY}px) rotateY(180deg) scale(2)`
       );
     }, 400);
+
+    setTimeout(() => {
+      displayCard.append(`
+        <div class='daily-tarot'><a href='${allTarots[randomCardIndex].daily}'>${allTarots[randomCardIndex].name}</a></div>
+      `);
+      displayCard.append(`
+        <div class='nes-tarot'><a href='${allTarots[randomCardIndex].nes}'>更多牌義</div>
+      `);
+    }, 600);
   });
 });
