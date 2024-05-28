@@ -76,17 +76,15 @@ $(document).ready(function () {
     // thisObject.children(".tarot-image-front").append(`
     //   <img src='./images/tarot/wands01.jpg' />
     // `);
-    const randomCardIndex = Math.floor(Math.random() * 4);
+    // const randomCardIndex = Math.floor(Math.random() * 4);
+    const randomCardIndex = 21;
     thisObject.children(".tarot-image-front").append(`
     <img src='${allTarots[randomCardIndex].img}' />
     `);
 
     setTimeout(() => {
       // thisObject.removeClass("tarot-card-close");
-      thisObject.css(
-        "transform-origin",
-        "top right"
-      )
+      thisObject.css("transform-origin", "top right");
       thisObject.css(
         "transform",
         `translate(${distanceX}px, ${distanceY}px) rotateY(180deg) scale(2)`
@@ -95,10 +93,10 @@ $(document).ready(function () {
 
     setTimeout(() => {
       displayCard.append(`
-        <div class='daily-tarot'><a href='${allTarots[randomCardIndex].daily}'>${allTarots[randomCardIndex].name}</a></div>
+        <div class='daily-tarot'><a href='${allTarots[randomCardIndex].daily}' target='_blank'>${allTarots[randomCardIndex].name}</a></div>
       `);
       displayCard.append(`
-        <div class='nes-tarot'><a href='${allTarots[randomCardIndex].nes}'>更多牌義</div>
+        <div class='nes-tarot'><a href='${allTarots[randomCardIndex].nes}' target='_blank'>更多牌義</div>
       `);
     }, 600);
   });
