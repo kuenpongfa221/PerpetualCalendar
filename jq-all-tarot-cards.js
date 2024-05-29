@@ -257,84 +257,98 @@ const allTarots = [
 
   //聖杯(含宮廷)
   {
+    //聖杯王牌
     img: "./images/tarot/cups01.jpg",
     name: "聖杯王牌",
     daily: "https://jasiyu.com/daily-tarot-ace-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-ace.html",
   },
   {
+    //聖杯2
     img: "./images/tarot/cups02.jpg",
     name: "聖杯2",
     daily: "https://jasiyu.com/daily-tarot-two-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-two.html",
   },
   {
+    //聖杯3
     img: "./images/tarot/cups03.jpg",
     name: "聖杯3",
     daily: "https://jasiyu.com/daily-tarot-three-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-three.html",
   },
   {
+    //聖杯4
     img: "./images/tarot/cups04.jpg",
     name: "聖杯4",
     daily: "https://jasiyu.com/daily-tarot-four-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-four.html",
   },
   {
+    //聖杯5
     img: "./images/tarot/cups05.jpg",
     name: "聖杯5",
     daily: "https://jasiyu.com/daily-tarot-five-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-five.html",
   },
   {
+    //聖杯6
     img: "./images/tarot/cups06.jpg",
     name: "聖杯6",
     daily: "https://jasiyu.com/daily-tarot-six-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-six.html",
   },
   {
+    //聖杯7
     img: "./images/tarot/cups07.jpg",
     name: "聖杯7",
     daily: "https://jasiyu.com/daily-tarot-seven-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-seven.html",
   },
   {
+    //聖杯8
     img: "./images/tarot/cups08.jpg",
     name: "聖杯8",
     daily: "https://jasiyu.com/daily-tarot-eight-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-eight.html",
   },
   {
+    //聖杯9
     img: "./images/tarot/cups09.jpg",
     name: "聖杯9",
     daily: "https://jasiyu.com/daily-tarot-nine-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-nine.html",
   },
   {
+    //聖杯10
     img: "./images/tarot/cups10.jpg",
     name: "聖杯10",
     daily: "https://jasiyu.com/daily-tarot-ten-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-cups-ten.html",
   },
   {
+    //聖杯侍者
     img: "./images/tarot/cups11.jpg",
     name: "聖杯侍者",
     daily: "https://jasiyu.com/daily-tarot-page-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-court-cups-page.html",
   },
   {
+    //聖杯騎士
     img: "./images/tarot/cups12.jpg",
     name: "聖杯騎士",
     daily: "https://jasiyu.com/daily-tarot-knight-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-court-cups-knight.html",
   },
   {
+    //聖杯皇后
     img: "./images/tarot/cups13.jpg",
     name: "聖杯皇后",
     daily: "https://jasiyu.com/daily-tarot-king-of-cups/",
     nes: "https://www.nes-tarot.com/tarot-meanings-court-cups-king.html",
   },
   {
+    //聖杯國王
     img: "./images/tarot/cups14.jpg",
     name: "聖杯國王",
     daily: "https://jasiyu.com/daily-tarot-king-of-cups/",
@@ -343,17 +357,201 @@ const allTarots = [
 
   //錢幣(含宮廷)
   {
+    //錢幣王牌
     img: "./images/tarot/pents01.jpg",
     name: "錢幣王牌",
     daily: "https://jasiyu.com/daily-tarot-ace-of-pentacles/",
     nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-ace.html",
   },
+  {
+    //錢幣2
+    img: "./images/tarot/pents02.jpg",
+    name: "錢幣2",
+    daily: "https://jasiyu.com/daily-tarot-two-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-two.html",
+  },
+  {
+    //錢幣3
+    img: "./images/tarot/pents03.jpg",
+    name: "錢幣3",
+    daily: "https://jasiyu.com/daily-tarot-three-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-three.html",
+  },
+  {
+    //錢幣4
+    img: "./images/tarot/pents04.jpg",
+    name: "錢幣4",
+    daily: "https://jasiyu.com/daily-tarot-four-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-four.html",
+  },
+  {
+    //錢幣5
+    img: "./images/tarot/pents05.jpg",
+    name: "錢幣5",
+    daily: "https://jasiyu.com/daily-tarot-four-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-four.html",
+  },
+  {
+    //錢幣6
+    img: "./images/tarot/pents06.jpg",
+    name: "錢幣6",
+    daily: "https://jasiyu.com/daily-tarot-four-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-four.html",
+  },
+  {
+    //錢幣7
+    img: "./images/tarot/pents07.jpg",
+    name: "錢幣7",
+    daily: "https://jasiyu.com/daily-tarot-seven-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-seven.html",
+  },
+  {
+    //錢幣8
+    img: "./images/tarot/pents08.jpg",
+    name: "錢幣8",
+    daily: "https://jasiyu.com/daily-tarot-eight-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-eight.html",
+  },
+  {
+    //錢幣9
+    img: "./images/tarot/pents09.jpg",
+    name: "錢幣9",
+    daily: "https://jasiyu.com/daily-tarot-nine-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-nine.html",
+  },
+  {
+    //錢幣10
+    img: "./images/tarot/pents10.jpg",
+    name: "錢幣10",
+    daily: "https://jasiyu.com/daily-tarot-ten-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-pentacles-ten.html",
+  },
+  {
+    //錢幣侍者
+    img: "./images/tarot/pents11.jpg",
+    name: "錢幣侍者",
+    daily: "https://jasiyu.com/daily-tarot-page-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-court-pentacles-page.html",
+  },
+  {
+    //錢幣騎士
+    img: "./images/tarot/pents12.jpg",
+    name: "錢幣騎士",
+    daily: "https://jasiyu.com/daily-tarot-knight-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-court-pentacles-knight.html",
+  },
+  {
+    //錢幣皇后
+    img: "./images/tarot/pents13.jpg",
+    name: "錢幣皇后",
+    daily: "https://jasiyu.com/daily-tarot-queen-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-court-pentacles-queen.html",
+  },
+  {
+    //錢幣國王
+    img: "./images/tarot/pents14.jpg",
+    name: "錢幣國王",
+    daily: "https://jasiyu.com/daily-tarot-king-of-pentacles/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-court-pentacles-king.html",
+  },
 
   //寶劍(含宮廷)
   {
+    //寶劍王牌
     img: "./images/tarot/swords01.jpg",
     name: "寶劍王牌",
     daily: "https://jasiyu.com/daily-tarot-ace-of-swords/",
     nes: "https://www.nes-tarot.com/tarot-meanings-swords-ace.html",
+  },
+  {
+    //寶劍2
+    img: "./images/tarot/swords02.jpg",
+    name: "寶劍2",
+    daily: "https://jasiyu.com/daily-tarot-two-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-swords-two.html",
+  },
+  {
+    //寶劍3
+    img: "./images/tarot/swords03.jpg",
+    name: "寶劍3",
+    daily: "https://jasiyu.com/daily-tarot-three-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-swords-three.html",
+  },
+  {
+    //寶劍4
+    img: "./images/tarot/swords04.jpg",
+    name: "寶劍4",
+    daily: "https://jasiyu.com/daily-tarot-four-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-swords-four.html",
+  },
+  {
+    //寶劍5
+    img: "./images/tarot/swords05.jpg",
+    name: "寶劍5",
+    daily: "https://jasiyu.com/daily-tarot-five-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-swords-five.html",
+  },
+  {
+    //寶劍6
+    img: "./images/tarot/swords06.jpg",
+    name: "寶劍6",
+    daily: "https://jasiyu.com/daily-tarot-six-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-swords-six.html",
+  },
+  {
+    //寶劍7
+    img: "./images/tarot/swords07.jpg",
+    name: "寶劍7",
+    daily: "https://jasiyu.com/daily-tarot-seven-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-swords-seven.html",
+  },
+  {
+    //寶劍8
+    img: "./images/tarot/swords08.jpg",
+    name: "寶劍8",
+    daily: "https://jasiyu.com/daily-tarot-eight-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-swords-eight.html",
+  },
+  {
+    //寶劍9
+    img: "./images/tarot/swords09.jpg",
+    name: "寶劍9",
+    daily: "https://jasiyu.com/daily-tarot-nine-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-swords-nine.html",
+  },
+  {
+    //寶劍10
+    img: "./images/tarot/swords10.jpg",
+    name: "寶劍10",
+    daily: "https://jasiyu.com/daily-tarot-ten-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-swords-ten.html",
+  },
+  {
+    //寶劍侍者
+    img: "./images/tarot/swords11.jpg",
+    name: "寶劍侍者",
+    daily: "https://jasiyu.com/daily-tarot-page-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-court-swords-page.html",
+  },
+  {
+    //寶劍騎士
+    img: "./images/tarot/swords12.jpg",
+    name: "寶劍騎士",
+    daily: "https://jasiyu.com/daily-tarot-knight-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-court-swords-knight.html",
+  },
+  {
+    //寶劍皇后
+    img: "./images/tarot/swords13.jpg",
+    name: "寶劍皇后",
+    daily: "https://jasiyu.com/daily-tarot-queen-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-court-swords-queen.html",
+  },
+  {
+    //寶劍國王
+    img: "./images/tarot/swords14.jpg",
+    name: "寶劍國王",
+    daily: "https://jasiyu.com/daily-tarot-king-of-swords/",
+    nes: "https://www.nes-tarot.com/tarot-meanings-court-swords-king.html",
   },
 ];

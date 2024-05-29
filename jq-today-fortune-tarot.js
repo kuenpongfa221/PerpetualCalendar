@@ -76,8 +76,8 @@ $(document).ready(function () {
     // thisObject.children(".tarot-image-front").append(`
     //   <img src='./images/tarot/wands01.jpg' />
     // `);
-    // const randomCardIndex = Math.floor(Math.random() * 4);
-    const randomCardIndex = 21;
+    const randomCardIndex = Math.floor(Math.random() * 78);
+    // const randomCardIndex = 21;
     thisObject.children(".tarot-image-front").append(`
     <img src='${allTarots[randomCardIndex].img}' />
     `);
