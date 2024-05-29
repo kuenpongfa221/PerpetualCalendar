@@ -454,8 +454,8 @@
             let wXImg;
             // console.log(wX);
             switch(wX){
-                case '多雲':
-                    wXImg = './images/04.svg';
+                case '多雲時晴':
+                    wXImg = './images/03.svg';
                     break;
                 case '多雲':
                     wXImg = './images/04.svg';
@@ -539,8 +539,8 @@
                     let wXImg;
                     console.log(wX);
                     switch(wX){
-                        case '多雲':
-                            wXImg = './images/04.svg';
+                        case '多雲時晴':
+                            wXImg = './images/03.svg';
                             break;
                         case '多雲':
                             wXImg = './images/04.svg';
@@ -600,8 +600,8 @@
                         let wXImg;
                         console.log(wX);
                         switch(wX){
-                            case '多雲':
-                                wXImg = './images/04.svg';
+                            case '多雲時晴':
+                                wXImg = './images/03.svg';
                                 break;
                             case '多雲':
                                 wXImg = './images/04.svg';
@@ -666,8 +666,8 @@
                             let wXImg;
                             console.log(wX);
                             switch(wX){
-                                case '多雲':
-                                    wXImg = './images/04.svg';
+                                case '多雲時晴':
+                                    wXImg = './images/03.svg';
                                     break;
                                 case '多雲':
                                     wXImg = './images/04.svg';
