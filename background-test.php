@@ -354,7 +354,7 @@
         .tarot-card-close{
             transform: rotateY(180deg);
         }
-        .shuffle-container{
+        .deal-container{
             border: 2px double lawngreen;
             width: 100%;
             height: calc(614.22px - 74% - 110px);
@@ -363,7 +363,7 @@
             align-items: center;
             justify-content: center;
         }
-        .shuffle{
+        .deal{
             width: 75px;
             height: 35px;
 
@@ -1317,7 +1317,7 @@
                     echo "<div class='today-fortune'>本日運勢</div>";
                     echo "<div class='display-card'></div>";
                     echo "<div class='tarots'></div>";
-                    echo "<div class='shuffle-container'><button class='shuffle'>洗牌</button></div>";
+                    echo "<div class='deal-container'><button class='deal'>重新發牌</button></div>";
                 // aside-right-content-container 的 div
                 echo "</div>";
             // aside-right-container 的 div
@@ -1329,5 +1329,6 @@
 <script src="jq-text-to-input-test.js"></script>
 <script src="jq-all-tarot-cards.js"></script>
 <script src="jq-today-fortune-tarot.js"></script>
+<script src="jq-deal-cards.js"></script>
 </body>
 </html>
