@@ -9,8 +9,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <style>
    /*請在這裹撰寫你的CSS*/ 
-  h1{
+        h1{
             text-align:center;
+            color:white;
         }
 
         .container{

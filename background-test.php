@@ -27,6 +27,7 @@
 
         h1{
             text-align:center;
+            color:white;
         }
 
         .body-container{
@@ -53,6 +54,7 @@
             flex-direction:row;
             justify-content: center;
             align-items: center;
+            box-shadow: 0px 0px 100px rgb(72, 91, 105);
         }
         /* 1. aside-left-container */
         .aside-left-container{
@@ -166,6 +168,7 @@
             font-size: 1.25rem;
             text-align:center;
             margin-left:10px;
+            border-radius: 10px;
         }
         .year-month-deadline-container > .chinese-year-month{
             font-size:1.5rem;
@@ -187,14 +190,17 @@
         }
         .item{
             /* background-color: dodgerblue; */
-            color: ghostwhite;
+            /* color: ghostwhite; */
+            color: black;
 
             flex-basis: calc(100% / 7);
             height: calc(600px / 7);
         }
         .item-weekend{
             /* background-color: maroon; */
+            background-color: #264460;
             color: ghostwhite;
+            /* color: black; */
 
             flex-basis: calc(100% / 7);
             height: calc(600px / 7);
@@ -251,11 +257,11 @@
         .aside-right-content-container{
             width:90%;
             height: 100%;
-            border: 2px double khaki;
+            /* border: 2px double khaki; */
             margin: auto;
         }
         .today-fortune{
-            border: 2px double lawngreen;
+            /* border: 2px double lawngreen; */
             width: auto;
             height: 57px;
             margin-top: 10px;
@@ -268,7 +274,7 @@
             justify-content: center;
         }
         .display-card{
-            border: 2px double lawngreen;
+            /* border: 2px double lawngreen; */
             width: 100%;
             height: 46%;
             margin-top: 20px;
@@ -531,11 +537,13 @@
             const todayDate = [todayYear, todayMonth, todayDay].join("-");
             //   console.log(todayDate);
 
-            const tomorrow = date.setDate(todayDay + 1);
+            const tomorrow = date.setDate(todayDay);
+            // console.log("tomorrow: " + tomorrow);
             const tomorrowDateObject = new Date(tomorrow);
+            // console.log("tomorrowDateObject: " + tomorrowDateObject);
             const tomorrowYear = tomorrowDateObject.getFullYear();
             const tomorrowMonth = (tomorrowDateObject.getMonth() + 1).toString().padStart(2, 0);
-            const tomorrowDay = tomorrowDateObject.getDate();
+            const tomorrowDay = tomorrowDateObject.getDate().toString().padStart(2, "0");
 
             //明天日期 string tomorrowDate
             const tomorrowDate = [tomorrowYear, tomorrowMonth, tomorrowDay].join("-");
@@ -673,12 +681,15 @@
                     }
             )
             // } else if(hour == 23){
-            } else if(hour >= 0){
+            } else if(hour < 6){
                 //在23:25的時候，還是 18:00~06:00
                 // 時間是 0. ~ 6.
                 $.get(
                     `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${tomorrowDate}T00%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
                         function (res, status) {
+                            console.log("ajax 是成功的");
+                            console.log("tomorrow Date: " + tomorrowDate);
+                            
                             afterGetAPI(res);
                             // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
                             // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
@@ -833,11 +844,11 @@
         $lastYear = $year - 1;
         $tomorrowYear = $year + 1;
 
-        echo "firstDay : $firstDay";
-        echo "<br>";
-        echo "firstWeekStartDay : $firstWeekStartDay";
-        echo "<br>";
-        echo "lastDay : $lastDay";
+        // echo "firstDay : $firstDay";
+        // echo "<br>";
+        // echo "firstWeekStartDay : $firstWeekStartDay";
+        // echo "<br>";
+        // echo "lastDay : $lastDay";
 
         //嘗試用陣列存紀念日
         $anniversarys = [
@@ -977,12 +988,12 @@
         include_once 'lunarCalendar.php';
         $lunar = new Lunar();
         $lunarMonth = $lunar -> convertSolarToLunar(2018, 5, 18);
-        print_r($lunarMonth);
-        echo "<br>";
+        // print_r($lunarMonth);
+        // echo "<br>";
         // echo $lunar->getLunarMonthDays(2022, 12);
-        echo (count($lunar->getLunarYearMonths(2022)));
+        // echo (count($lunar->getLunarYearMonths(2022)));
         // 測試now的功能(回到今天)
-        echo "<a href='index-test.php?year=$nowYear&month=$nowMonth' class=''>Now</a>";
+        // echo "<a href='index-test.php?year=$nowYear&month=$nowMonth' class=''>Now</a>";
     ?>
 
     <?php
@@ -991,7 +1002,7 @@
         $today = strtotime(date('Y-m-d'));
         // $today = strtotime(date('Y-9-10'));
         $diff = (($lastTrainingDay - $today) / (60*60*24));
-        echo "距離結訓剩下 $diff 天";
+        // echo "距離結訓剩下 $diff 天";
     ?>
 
     <?php
