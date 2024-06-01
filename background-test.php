@@ -506,7 +506,7 @@
             // console.log(date);
             const todayYear = date.getFullYear();
             const todayMonth = (date.getMonth() + 1).toString().padStart(2, 0);
-            const todayDay = date.getDate();
+            const todayDay = date.getDate().toString().padStart(2,0);
             //   console.log(todayYear, todayMonth, todayDay);
 
             //今天日期string todayDate
@@ -529,62 +529,62 @@
                 `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T12%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
 
                 function (res, status) {
-                    
-                    const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
-                    const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                    console.log(wX);
-                    const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
-                    const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
-                    //在if外面設wXImgh才不會被 local variable吃掉!!
-                    let wXImg;
-                    console.log(wX);
-                    switch(wX){
-                        case '多雲時晴':
-                            wXImg = './images/03.svg';
-                            break;
-                        case '多雲':
-                            wXImg = './images/04.svg';
-                            break;
-                        case '多雲時陰':
-                            wXImg = './images/05.svg';
-                            break;
-                        case '陰時多雲':
-                            wXImg = './images/06.svg';
-                            break;
-                        case '陰天':
-                            wXImg = './images/07.svg';
-                            break;
-                        case '多雲短暫陣雨':
-                            wXImg = './images/08.svg';
-                            break;
-                        case '多雲時陰短暫陣雨':
-                            wXImg = './images/09.svg';
-                            break;
-                        case '陰短暫陣雨':
-                            wXImg = './images/11.svg';
-                            break;
-                        case '多雲短暫陣雨或雷雨':
-                            wXImg = './images/15.svg';
-                            break;
-                        case '多雲時陰短暫陣雨或雷雨':
-                            wXImg = './images/16.svg';
-                            break;
-                        case '陰時多雲短暫陣雨或雷雨':
-                            wXImg = './images/17.svg';
-                            break;
-                        case '陰短暫陣雨或雷雨':
-                            wXImg = './images/18.svg';
-                            break;
-                        case '多雲午後短暫雷陣雨':
-                            wXImg = './images/22.svg';
-                            break;
-                        default:
-                            wXImg = './images/weatherToBeAdd.png';
-                            break;
-                    }
-                    $(".weather-icon-img").attr("src", wXImg);
-                    $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
-                    $(".weather-pop12h").text(`降雨機率:${pop12h}`);
+                    afterGetAPI(res);
+                    // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
+                    // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
+                    // // console.log(wX);
+                    // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
+                    // const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
+                    // //在if外面設wXImgh才不會被 local variable吃掉!!
+                    // let wXImg;
+                    // console.log(wX);
+                    // switch(wX){
+                    //     case '多雲時晴':
+                    //         wXImg = './images/03.svg';
+                    //         break;
+                    //     case '多雲':
+                    //         wXImg = './images/04.svg';
+                    //         break;
+                    //     case '多雲時陰':
+                    //         wXImg = './images/05.svg';
+                    //         break;
+                    //     case '陰時多雲':
+                    //         wXImg = './images/06.svg';
+                    //         break;
+                    //     case '陰天':
+                    //         wXImg = './images/07.svg';
+                    //         break;
+                    //     case '多雲短暫陣雨':
+                    //         wXImg = './images/08.svg';
+                    //         break;
+                    //     case '多雲時陰短暫陣雨':
+                    //         wXImg = './images/09.svg';
+                    //         break;
+                    //     case '陰短暫陣雨':
+                    //         wXImg = './images/11.svg';
+                    //         break;
+                    //     case '多雲短暫陣雨或雷雨':
+                    //         wXImg = './images/15.svg';
+                    //         break;
+                    //     case '多雲時陰短暫陣雨或雷雨':
+                    //         wXImg = './images/16.svg';
+                    //         break;
+                    //     case '陰時多雲短暫陣雨或雷雨':
+                    //         wXImg = './images/17.svg';
+                    //         break;
+                    //     case '陰短暫陣雨或雷雨':
+                    //         wXImg = './images/18.svg';
+                    //         break;
+                    //     case '多雲午後短暫雷陣雨':
+                    //         wXImg = './images/22.svg';
+                    //         break;
+                    //     default:
+                    //         wXImg = './images/weatherToBeAdd.png';
+                    //         break;
+                    // }
+                    // $(".weather-icon-img").attr("src", wXImg);
+                    // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
+                    // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
                 }
             );
             } else if (hour >= 18 && hour < 23) {
@@ -592,65 +592,66 @@
             $.get(
                 `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T18%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
                     function (res, status) {
-                        const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
-                        const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                        const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
-                        const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
-                        //在if外面設wXImgh才不會被 local variable吃掉!!
-                        let wXImg;
-                        console.log(wX);
-                        switch(wX){
-                            case '多雲時晴':
-                                wXImg = './images/03.svg';
-                                break;
-                            case '多雲':
-                                wXImg = './images/04.svg';
-                                break;
-                            case '多雲時陰':
-                                wXImg = './images/05.svg';
-                                break;
-                            case '陰時多雲':
-                                wXImg = './images/06.svg';
-                                break;
-                            case '陰天':
-                                wXImg = './images/07.svg';
-                                break;
-                            case '多雲短暫陣雨':
-                                wXImg = './images/08.svg';
-                                break;
-                            case '多雲時陰短暫陣雨':
-                                wXImg = './images/09.svg';
-                                break;
-                            case '陰短暫陣雨':
-                                wXImg = './images/11.svg';
-                                break;
-                            case '多雲短暫陣雨或雷雨':
-                                wXImg = './images/15.svg';
-                                break;
-                            case '多雲時陰短暫陣雨或雷雨':
-                                wXImg = './images/16.svg';
-                                break;
-                            case '陰時多雲短暫陣雨或雷雨':
-                                wXImg = './images/17.svg';
-                                break;
-                            case '陰短暫陣雨或雷雨':
-                                wXImg = './images/18.svg';
-                                break;
-                            case '多雲午後短暫雷陣雨':
-                                wXImg = './images/22.svg';
-                                break;
-                            default:
-                                wXImg = './images/weatherToBeAdd.png';
-                                break;
-                        }
-                        $(".weather-icon-img").attr("src", wXImg);
-                        $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
-                        $(".weather-pop12h").text(`降雨機率:${pop12h}`);
-                                console.log(res);
-                                console.log(wX);
-                                console.log(minT);
-                                console.log(maxT);
-                                console.log(pop12h);
+                        afterGetAPI(res);
+                        // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
+                        // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
+                        // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
+                        // const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
+                        // //在if外面設wXImgh才不會被 local variable吃掉!!
+                        // let wXImg;
+                        // console.log(wX);
+                        // switch(wX){
+                        //     case '多雲時晴':
+                        //         wXImg = './images/03.svg';
+                        //         break;
+                        //     case '多雲':
+                        //         wXImg = './images/04.svg';
+                        //         break;
+                        //     case '多雲時陰':
+                        //         wXImg = './images/05.svg';
+                        //         break;
+                        //     case '陰時多雲':
+                        //         wXImg = './images/06.svg';
+                        //         break;
+                        //     case '陰天':
+                        //         wXImg = './images/07.svg';
+                        //         break;
+                        //     case '多雲短暫陣雨':
+                        //         wXImg = './images/08.svg';
+                        //         break;
+                        //     case '多雲時陰短暫陣雨':
+                        //         wXImg = './images/09.svg';
+                        //         break;
+                        //     case '陰短暫陣雨':
+                        //         wXImg = './images/11.svg';
+                        //         break;
+                        //     case '多雲短暫陣雨或雷雨':
+                        //         wXImg = './images/15.svg';
+                        //         break;
+                        //     case '多雲時陰短暫陣雨或雷雨':
+                        //         wXImg = './images/16.svg';
+                        //         break;
+                        //     case '陰時多雲短暫陣雨或雷雨':
+                        //         wXImg = './images/17.svg';
+                        //         break;
+                        //     case '陰短暫陣雨或雷雨':
+                        //         wXImg = './images/18.svg';
+                        //         break;
+                        //     case '多雲午後短暫雷陣雨':
+                        //         wXImg = './images/22.svg';
+                        //         break;
+                        //     default:
+                        //         wXImg = './images/weatherToBeAdd.png';
+                        //         break;
+                        // }
+                        // $(".weather-icon-img").attr("src", wXImg);
+                        // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
+                        // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
+                        //         console.log(res);
+                        //         console.log(wX);
+                        //         console.log(minT);
+                        //         console.log(maxT);
+                        //         console.log(pop12h);
                     }
             )
             } else if(hour == 23){
@@ -658,62 +659,63 @@
                 $.get(
                     `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${tomorrowDate}T00%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
                         function (res, status) {
-                            const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
-                            const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                            const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
-                            const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
-                            //在if外面設wXImgh才不會被 local variable吃掉!!
-                            let wXImg;
-                            console.log(wX);
-                            switch(wX){
-                                case '多雲時晴':
-                                    wXImg = './images/03.svg';
-                                    break;
-                                case '多雲':
-                                    wXImg = './images/04.svg';
-                                    break;
-                                case '多雲時陰':
-                                    wXImg = './images/05.svg';
-                                    break;
-                                case '陰天':
-                                    wXImg = './images/07.svg';
-                                    break;
-                                case '多雲短暫陣雨':
-                                    wXImg = './images/08.svg';
-                                    break;
-                                case '多雲時陰短暫陣雨':
-                                    wXImg = './images/09.svg';
-                                    break;
-                                case '陰短暫陣雨':
-                                    wXImg = './images/11.svg';
-                                    break;
-                                case '多雲短暫陣雨或雷雨':
-                                    wXImg = './images/15.svg';
-                                    break;
-                                case '多雲時陰短暫陣雨或雷雨':
-                                    wXImg = './images/16.svg';
-                                    break;
-                                case '陰時多雲短暫陣雨或雷雨':
-                                    wXImg = './images/17.svg';
-                                    break;
-                                case '陰短暫陣雨或雷雨':
-                                    wXImg = './images/18.svg';
-                                    break;
-                                case '多雲午後短暫雷陣雨':
-                                    wXImg = './images/22.svg';
-                                    break;
-                                default:
-                                    wXImg = './images/weatherToBeAdd.png';
-                                    break;
-                            }
-                            $(".weather-icon-img").attr("src", wXImg);
-                            $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
-                            $(".weather-pop12h").text(`降雨機率:${pop12h}`);
-                                    console.log(res);
-                                    console.log(wX);
-                                    console.log(minT);
-                                    console.log(maxT);
-                                    console.log(pop12h);
+                            afterGetAPI(res);
+                            // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
+                            // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
+                            // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
+                            // const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
+                            // //在if外面設wXImgh才不會被 local variable吃掉!!
+                            // let wXImg;
+                            // console.log(wX);
+                            // switch(wX){
+                            //     case '多雲時晴':
+                            //         wXImg = './images/03.svg';
+                            //         break;
+                            //     case '多雲':
+                            //         wXImg = './images/04.svg';
+                            //         break;
+                            //     case '多雲時陰':
+                            //         wXImg = './images/05.svg';
+                            //         break;
+                            //     case '陰天':
+                            //         wXImg = './images/07.svg';
+                            //         break;
+                            //     case '多雲短暫陣雨':
+                            //         wXImg = './images/08.svg';
+                            //         break;
+                            //     case '多雲時陰短暫陣雨':
+                            //         wXImg = './images/09.svg';
+                            //         break;
+                            //     case '陰短暫陣雨':
+                            //         wXImg = './images/11.svg';
+                            //         break;
+                            //     case '多雲短暫陣雨或雷雨':
+                            //         wXImg = './images/15.svg';
+                            //         break;
+                            //     case '多雲時陰短暫陣雨或雷雨':
+                            //         wXImg = './images/16.svg';
+                            //         break;
+                            //     case '陰時多雲短暫陣雨或雷雨':
+                            //         wXImg = './images/17.svg';
+                            //         break;
+                            //     case '陰短暫陣雨或雷雨':
+                            //         wXImg = './images/18.svg';
+                            //         break;
+                            //     case '多雲午後短暫雷陣雨':
+                            //         wXImg = './images/22.svg';
+                            //         break;
+                            //     default:
+                            //         wXImg = './images/weatherToBeAdd.png';
+                            //         break;
+                            // }
+                            // $(".weather-icon-img").attr("src", wXImg);
+                            // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
+                            // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
+                            //         console.log(res);
+                            //         console.log(wX);
+                            //         console.log(minT);
+                            //         console.log(maxT);
+                            //         console.log(pop12h);
                         }
                 )
             } else{
@@ -722,68 +724,69 @@
                 `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T06%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
 
                 function (res, status) {
-                    const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
-                    const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                    const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
-                    const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
-                    //在if外面設wXImgh才不會被 local variable吃掉!!
-                    let wXImg;
-                    // console.log(wX);
-                    switch(wX){
-                        case '多雲':
-                            wXImg = './images/04.svg';
-                            break;
-                        case '多雲':
-                            wXImg = './images/04.svg';
-                            break;
-                        case '多雲時陰':
-                            wXImg = './images/05.svg';
-                            break;
-                        case '陰時多雲':
-                            wXImg = './images/06.svg';
-                            break;
-                        case '陰天':
-                            wXImg = './images/07.svg';
-                            break;
-                        case '多雲短暫陣雨':
-                            wXImg = './images/08.svg';
-                            break;
-                        case '多雲時陰短暫陣雨':
-                            wXImg = './images/09.svg';
-                            break;
-                        case '陰短暫陣雨':
-                            wXImg = './images/11.svg';
-                            break;
-                        case '多雲短暫陣雨或雷雨':
-                            wXImg = './images/15.svg';
-                            break;
-                        case '多雲時陰短暫陣雨或雷雨':
-                            wXImg = './images/16.svg';
-                            break;
-                        case '陰時多雲短暫陣雨或雷雨':
-                            wXImg = './images/17.svg';
-                            break;
-                        case '陰短暫陣雨或雷雨':
-                            wXImg = './images/18.svg';
-                            break;
-                        case '多雲午後短暫雷陣雨':
-                            wXImg = './images/22.svg';
-                            break;
-                        default:
-                            wXImg = './images/weatherToBeAdd.png';
-                            break;
-                    }
-                    $(".weather-icon-img").attr("src", wXImg);
-                    // $(".weather-icon-img").attr('width', '200px');
-                    // $(".weather-icon-img").attr('height', '150px');
-                    $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
-                    $(".weather-pop12h").text(`降雨機率:${pop12h}`);
-                        //     console.log(res);
-                        //     console.log(wX);
-                        //     console.log(minT);
-                        //     console.log(maxT);
-                        //     console.log(pop12h);
-                        // console.log(res.records);
+                    afterGetAPI(res);
+                    // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
+                    // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
+                    // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
+                    // const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
+                    // //在if外面設wXImgh才不會被 local variable吃掉!!
+                    // let wXImg;
+                    // // console.log(wX);
+                    // switch(wX){
+                    //     case '多雲':
+                    //         wXImg = './images/04.svg';
+                    //         break;
+                    //     case '多雲':
+                    //         wXImg = './images/04.svg';
+                    //         break;
+                    //     case '多雲時陰':
+                    //         wXImg = './images/05.svg';
+                    //         break;
+                    //     case '陰時多雲':
+                    //         wXImg = './images/06.svg';
+                    //         break;
+                    //     case '陰天':
+                    //         wXImg = './images/07.svg';
+                    //         break;
+                    //     case '多雲短暫陣雨':
+                    //         wXImg = './images/08.svg';
+                    //         break;
+                    //     case '多雲時陰短暫陣雨':
+                    //         wXImg = './images/09.svg';
+                    //         break;
+                    //     case '陰短暫陣雨':
+                    //         wXImg = './images/11.svg';
+                    //         break;
+                    //     case '多雲短暫陣雨或雷雨':
+                    //         wXImg = './images/15.svg';
+                    //         break;
+                    //     case '多雲時陰短暫陣雨或雷雨':
+                    //         wXImg = './images/16.svg';
+                    //         break;
+                    //     case '陰時多雲短暫陣雨或雷雨':
+                    //         wXImg = './images/17.svg';
+                    //         break;
+                    //     case '陰短暫陣雨或雷雨':
+                    //         wXImg = './images/18.svg';
+                    //         break;
+                    //     case '多雲午後短暫雷陣雨':
+                    //         wXImg = './images/22.svg';
+                    //         break;
+                    //     default:
+                    //         wXImg = './images/weatherToBeAdd.png';
+                    //         break;
+                    // }
+                    // $(".weather-icon-img").attr("src", wXImg);
+                    // // $(".weather-icon-img").attr('width', '200px');
+                    // // $(".weather-icon-img").attr('height', '150px');
+                    // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
+                    // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
+                    //     //     console.log(res);
+                    //     //     console.log(wX);
+                    //     //     console.log(minT);
+                    //     //     console.log(maxT);
+                    //     //     console.log(pop12h);
+                    //     // console.log(res.records);
                 }
             );
             }
@@ -1307,6 +1310,7 @@
                     echo "<a href='background-test.php?year=$prev_year&month=$prev_month' class=''>月⬆</a>";
                     echo "<a href='background-test.php?year=$next_year&month=$next_month' class=''>月⬇</a>";
                     echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
+                    echo "<a href='background-test.php?year=$nowYear&month=$nowMonth' class=''>今日</a>";
 
                 echo "</div>";
             echo "</div>";
