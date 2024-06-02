@@ -32,6 +32,7 @@
 
         .body-container{
             width: 100%;
+            height: 102%;
             display:flex;
             flex-direction:row;
             justify-content: center;
@@ -45,6 +46,7 @@
         }
         .mask-container{
             width: 1480px;
+            height: 109%;
             background-image: linear-gradient(
                 rgba(255, 255, 255, 0.5),
                 rgba(255, 255, 255, 0.5)
@@ -159,8 +161,11 @@
         .year-month-deadline-container{
             width: 100%;
             height: 50px;
-            display:flex;
-            align-items:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #264460;
+            color: ghostwhite;
         }
         .year-month-deadline-container > select{
             width: 80px;
@@ -192,18 +197,30 @@
             /* background-color: dodgerblue; */
             /* color: ghostwhite; */
             color: black;
+            border: 1px solid gray;
 
             flex-basis: calc(100% / 7);
             height: calc(600px / 7);
+
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
         }
         .item-weekend{
             /* background-color: maroon; */
             background-color: #264460;
             color: ghostwhite;
+            border: 1px solid gray;
             /* color: black; */
 
             flex-basis: calc(100% / 7);
             height: calc(600px / 7);
+
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
         }
         .not-this-month-font-color{
             color:gray;
@@ -1247,7 +1264,7 @@
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }else{
-                                echo "<div class='item-weekend'><div class='row-solar'>$format 端午節</div>" . 
+                                echo "<div class='item-weekend'><div class='row-solar'>$format" . "<br/>". "端午節</div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }
