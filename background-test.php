@@ -46,7 +46,7 @@
         }
         .mask-container{
             width: 1480px;
-            height: 109%;
+            height: 100%;
             background-image: linear-gradient(
                 rgba(255, 255, 255, 0.5),
                 rgba(255, 255, 255, 0.5)
@@ -206,6 +206,8 @@
             flex-direction: column;
             justify-content:center;
             align-items:center;
+
+            font-weight: bold;
         }
         .item-weekend{
             /* background-color: maroon; */
@@ -416,6 +418,11 @@
 <body>
 <h1>萬年曆</h1>  
 <!-- 測試下拉年份與下拉月份，並即時更新 -->
+
+    <!-- echo "<h1 style='color:white'>" . isset($_GET['year']) . "</h1>";
+    if((empty($_GET['year']))){
+        header("location:background-test.php?year=2024&month=9");
+    } -->
 
   <script>
     // 測試 下拉選單修改年月
@@ -844,6 +851,8 @@
     })
   </script>
 
+
+
 <?php
 /*請在這裹撰寫你的萬年曆程式碼*/  
         $month = $_GET['month'] ?? date('m');
@@ -1064,7 +1073,7 @@
 
 
                     echo "<div class='todolist-container'>";
-                        echo "<h3 class='todolist-title'>代辦事項:</h3>";
+                        echo "<h3 class='todolist-title'>&ensp;今日代辦事項:</h3>";
                         echo "<div class='todolist-row'>1. <div class='todolist-item-1'></div></div>";
                         echo "<div class='todolist-row'>2. <div class='todolist-item-2'>練習sql</div></div>";
                         echo "<div class='todolist-row'>3. <div class='todolist-item-3'>學習ps</div></div>";
@@ -1382,6 +1391,8 @@
         echo "</div>";
     ?>
 
+
+<script src="jq-today-and-hover.js"></script>
 <script src="jq-text-to-input-test.js"></script>
 <script src="jq-all-tarot-cards.js"></script>
 <script src="jq-today-fortune-tarot.js"></script>
