@@ -45,7 +45,7 @@ const allTarots = [
   {
     // 6 戀人
     img: "./images/tarot/rws_tarot_06_lovers.jpg",
-    name: "皇后",
+    name: "戀人",
     daily: "https://jasiyu.com/daily-tarot-the-lovers/",
     nes: "https://www.nes-tarot.com/tarot-meanings-lovers.html",
   },

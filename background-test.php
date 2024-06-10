@@ -37,12 +37,17 @@
             flex-direction:row;
             justify-content: center;
             align-items: center;
+            position:relative;
             /* background-color:white; */
             /* background-image: linear-gradient(
                 rgba(255, 255, 255, 0.5),
                 rgba(255, 255, 255, 0.5)
             );
             border-radius: 10px; */
+        }
+        #canvas {
+            position:absolute;
+            z-index: -1;
         }
         .mask-container{
             width: 1480px;
@@ -209,6 +214,10 @@
 
             font-weight: bold;
         }
+        .item:hover{
+            transition: all 0.4s ease;
+            transform: scale(1.3);
+        }
         .item-weekend{
             /* background-color: maroon; */
             background-color: #264460;
@@ -224,6 +233,10 @@
             justify-content:center;
             align-items:center;
         }
+        .item-weekend:hover{
+            transition: all 0.2s ease;
+            transform: scale(1.3);
+        }
         .not-this-month-font-color{
             color:gray;
         }
@@ -231,6 +244,32 @@
         /* 陽曆row row-solar */
         .row-solar{
             height: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+            align-items:center;
+        }
+        .row-solar-date{
+            width: 100%;
+            display:flex;
+            justify-content: center;
+            align-items:center;
+
+            /* background-color: khaki;
+            border-radius: 100%;
+            font-weight:bold; */
+        }
+        .row-solar-festival{
+            width: 100%;
+            display:flex;
+            justify-content: center;
+            align-items:center;
+        }
+        .today-solor-color{
+            color: red;
+            background-color: khaki;
+            border-radius: 100%;
+            font-weight:bold;
         }
         /* 陰曆row row-lunar */
         .row-lunar{
@@ -865,6 +904,9 @@
         $nowYear = date('Y');
         $nowMonth = date('n');
         $nowDay = date('d');
+        //測試今天日期
+        $nowDayTest = strval(intval(date('d')) + 1);
+        echo $nowDayTest;
 
         //去年與明年
         $lastYear = $year - 1;
@@ -1033,7 +1075,7 @@
 
     <?php
         echo "<div class='body-container'>";
-
+            echo "<canvas id='canvas'></canvas>";
             echo "<div class='mask-container'>";
                 // 1. aside-left-container : 要包date-time-container、weather-container、todolist-container
                 echo "<div class='aside-left-container'>";
@@ -1269,11 +1311,11 @@
 
                         if($lunarDate[1] == '五月' && $lunarDate[2] == '初五'){
                             if($dayMonth != $month){
-                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 端午節</div>" . 
+                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date not-this-month-font-color'>$format</div><div class='row-solar-festival'>端午節</div></div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }else{
-                                echo "<div class='item-weekend'><div class='row-solar'>$format" . "<br/>". "端午節</div>" . 
+                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date not-this-month-font-color'>$format</div><div class='row-solar-festival'>端午節</div></div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }
@@ -1397,5 +1439,6 @@
 <script src="jq-all-tarot-cards.js"></script>
 <script src="jq-today-fortune-tarot.js"></script>
 <script src="jq-deal-cards.js"></script>
+<script src="meteor-script.js"></script>
 </body>
 </html>
