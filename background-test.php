@@ -905,8 +905,8 @@
         $nowMonth = date('n');
         $nowDay = date('d');
         //測試今天日期
-        $nowDayTest = strval(intval(date('d')) + 1);
-        echo $nowDayTest;
+        // $nowDayTest = strval(intval(date('d')) + 1);
+        // echo $nowDayTest;
 
         //去年與明年
         $lastYear = $year - 1;
@@ -977,7 +977,7 @@
             ],
             "8" => [
                 "8" => "父親節",
-                "27" => "鄭成功誕辰紀念日",
+                "27" => "鄭成功紀念日",
             ],
             "9" => [
                 "1" => "記者節",
@@ -999,7 +999,7 @@
             "11" => [
                 "1" => "商人節",
                 "11" => "工業節",
-                "12" => "國父誕辰紀念日",
+                "12" => "國父紀念日",
                 "21" => "防空節"
             ],
             "12" => [
@@ -1191,11 +1191,11 @@
 
                         if($dayMonth == "1" && $format == "1"){
                             if($dayMonth != $month){
-                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 元旦</div>" . 
-                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>元旦</div></div>" . 
+                                "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }else{
-                                echo "<div class='item-weekend'><div class='row-solar'>$format 元旦</div>" . 
+                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>元旦</div></div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }
@@ -1204,11 +1204,12 @@
                         }
                         if($dayMonth == "2" && $format == "28"){
                             if($dayMonth != $month){
-                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 和平紀念日</div>" . 
-                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>和平紀念日</div></div>" . 
+                                "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
+
                             }else{
-                                echo "<div class='item-weekend'><div class='row-solar'>$format 和平紀念日</div>" . 
+                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>和平紀念日</div></div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }
@@ -1217,11 +1218,11 @@
                         }
                         if($dayMonth == "10" && $format == "10"){
                             if($dayMonth != $month){
-                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 國慶日</div>" . 
-                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>國慶日</div></div>" . 
+                                "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }else{
-                                echo "<div class='item-weekend'><div class='row-solar'>$format 國慶日</div>" . 
+                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>國慶日</div></div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }
@@ -1235,11 +1236,11 @@
                             if($lunarDecemberTotalDays == 29){
                                 if($lunarDate[1] == '臘月' && $lunarDate[2] == '廿九'){
                                     if($dayMonth != $month){
-                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 除夕</div>" . 
-                                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>除夕</div></div>" . 
+                                        "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }else{
-                                        echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
+                                        echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>除夕</div></div>" . 
                                         "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }
@@ -1249,11 +1250,14 @@
                             }else if($lunarDecemberTotalDays == 30){
                                 if($lunarDate[1] == '臘月' && $lunarDate[2] == '三十'){
                                     if($dayMonth != $month){
-                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 除夕</div>" . 
-                                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>除夕</div></div>" . 
+                                        "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }else{
                                         echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
+                                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                        "</div>";
+                                        echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>除夕</div></div>" . 
                                         "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }
@@ -1268,11 +1272,11 @@
                             if($lunarDecemberTotalDays == 29){
                                 if($lunarDate[1] == '臘月' && $lunarDate[2] == '廿九'){
                                     if($dayMonth != $month){
-                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 除夕</div>" . 
-                                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>除夕</div></div>" . 
+                                        "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }else{
-                                        echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
+                                        echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>除夕</div></div>" . 
                                         "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }
@@ -1281,11 +1285,11 @@
                             }else if($lunarDecemberTotalDays == 30){
                                 if($lunarDate[1] == '臘月' && $lunarDate[2] == '三十'){
                                     if($dayMonth != $month){
-                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 除夕</div>" . 
-                                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>除夕</div></div>" . 
+                                        "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }else{
-                                        echo "<div class='item-weekend'><div class='row-solar'>$format 除夕</div>" . 
+                                        echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>除夕</div></div>" . 
                                         "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }
@@ -1297,11 +1301,11 @@
 
                         if($lunarDate[1] == '正月' && $lunarDate[2] == '初一'){
                             if($dayMonth != $month){
-                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 春節</div>" . 
-                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>春節</div></div>" . 
+                                "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }else{
-                                echo "<div class='item-weekend'><div class='row-solar'>$format 春節</div>" . 
+                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>春節</div></div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }
@@ -1311,11 +1315,11 @@
 
                         if($lunarDate[1] == '五月' && $lunarDate[2] == '初五'){
                             if($dayMonth != $month){
-                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date not-this-month-font-color'>$format</div><div class='row-solar-festival'>端午節</div></div>" . 
-                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>端午節</div></div>" . 
+                                "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }else{
-                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date not-this-month-font-color'>$format</div><div class='row-solar-festival'>端午節</div></div>" . 
+                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>端午節</div></div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }
@@ -1325,11 +1329,11 @@
 
                         if($lunarDate[1] == '八月' && $lunarDate[2] == '十五'){
                             if($dayMonth != $month){
-                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format 中秋節</div>" . 
-                                "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>中秋節</div></div>" . 
+                                "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }else{
-                                echo "<div class='item-weekend'><div class='row-solar'>$format 中秋節</div>" . 
+                                echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>中秋節</div></div>" . 
                                 "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                 "</div>";
                             }
@@ -1342,21 +1346,21 @@
                                 if($anniversaryDate == $format && $month == $dayMonth){
                                     if($w == 0 || $w == 6){
                                         if($dayMonth != $month){
-                                            echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format $anniversaryName</div>" . 
-                                            "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                            echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>$anniversaryName</div></div>" . 
+                                            "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                             "</div>";
                                         }else{
-                                            echo "<div class='item-weekend'><div class='row-solar'>$format $anniversaryName</div>" . 
+                                            echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>$anniversaryName</div></div>" . 
                                             "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                             "</div>";
                                         }
                                     }else{
                                         if($dayMonth != $month){
-                                            echo "<div class='item not-this-month-font-color'><div class='row-solar'>$format $anniversaryName</div>" . 
-                                            "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
+                                            echo "<div class='item not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>$anniversaryName</div></div>" . 
+                                            "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                             "</div>";
                                         }else{
-                                            echo "<div class='item'><div class='row-solar'>$format $anniversaryName</div>" . 
+                                            echo "<div class='item'><div class='row-solar'><div class='row-solar-date'>$format</div><div class='row-solar-festival'>$anniversaryName</div></div>" . 
                                             "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                             "</div>";
                                         }
@@ -1368,27 +1372,23 @@
                             if(!$isAnniversary){
                                 if($w == 0 || $w == 6){
                                     if($dayMonth != $month){
-                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'>$format</div>" . 
-                                        "<div class='row-lunar'> $lunarDate[1]$lunarDate[2]  </div>" .
-                                        //item-weekend的div
+                                        echo "<div class='item-weekend not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div></div>" . 
+                                        "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }else{
-                                        echo "<div class='item-weekend'><div class='row-solar'>$format</div>" . 
+                                        echo "<div class='item-weekend'><div class='row-solar'><div class='row-solar-date'>$format</div></div>" . 
                                         "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                                        //item-weekend的div
                                         "</div>";
                                     }
 
                                 }else{
                                     if($dayMonth != $month){
-                                        echo "<div class='item not-this-month-font-color'><div class='row-solar'>$format</div>" . 
-                                        "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                                        //item的div
+                                        echo "<div class='item not-this-month-font-color'><div class='row-solar'><div class='row-solar-date'>$format</div></div>" . 
+                                        "<div class='row-lunar not-this-month-font-color'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
                                         "</div>";
                                     }else{
-                                        echo "<div class='item'><div class='row-solar'>$format</div>" . 
+                                        echo "<div class='item'><div class='row-solar'><div class='row-solar-date'>$format</div></div>" . 
                                         "<div class='row-lunar'>" . $lunarDate[1] . $lunarDate[2] . "</div>" .
-                                        //item的div
                                         "</div>";
                                     }
                                 }
