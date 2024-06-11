@@ -28,6 +28,7 @@
         h1{
             text-align:center;
             color:white;
+            font-size:3rem;
         }
 
         .body-container{
@@ -38,6 +39,7 @@
             justify-content: center;
             align-items: center;
             position:relative;
+            
             /* background-color:white; */
             /* background-image: linear-gradient(
                 rgba(255, 255, 255, 0.5),
@@ -62,6 +64,9 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0px 0px 100px rgb(72, 91, 105);
+            position:absolute;
+            z-index:2;
+            overflow:hidden;
         }
         /* 1. aside-left-container */
         .aside-left-container{
