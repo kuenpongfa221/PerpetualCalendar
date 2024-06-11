@@ -22,7 +22,11 @@
             background-image:url('./images/star-night.jpg');
             background-size: 100% 100vh;
             overflow-x:hidden;
-            /* backdrop-filter: blur(100px); */
+            transition:2s;
+            /* backdrop-filter: blur(40px); */
+        }
+        .body-hover{
+            backdrop-filter: blur(40px);
         }
 
         h1{
@@ -63,10 +67,16 @@
             flex-direction:row;
             justify-content: center;
             align-items: center;
-            box-shadow: 0px 0px 100px rgb(72, 91, 105);
+            /* box-shadow: 0px 0px 100px rgb(72, 91, 105); */
             position:absolute;
             z-index:2;
             overflow:hidden;
+            transition: all 2s ease;
+        }
+        .mask-container-hover{
+            /* box-shadow: 0px 25px 60px rgb(72, 91, 105); */
+            /* box-shadow: 0px 25px 60px rgb(232, 232, 232, .8); */
+            box-shadow: 0px 25px 60px rgb(216, 216, 216, .8);
         }
         /* 1. aside-left-container */
         .aside-left-container{
@@ -106,10 +116,11 @@
             align-items: center;
         }
         .weather-container > .weather-icon{
-            width: 100%;
+            width: 70%;
+            border-radius: 35%;
             flex-basis: 53%;
             /* background-color: tomato; */
-
+            background-color:#66849A;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -275,6 +286,8 @@
             background-color: khaki;
             border-radius: 100%;
             font-weight:bold;
+            width: 50px;
+            height: 50px;
         }
         /* 陰曆row row-lunar */
         .row-lunar{
@@ -1438,7 +1451,7 @@
         echo "</div>";
     ?>
 
-
+<script src='jq-blur-background.js'></script>
 <script src="jq-today-and-hover.js"></script>
 <script src="jq-text-to-input-test.js"></script>
 <script src="jq-all-tarot-cards.js"></script>
