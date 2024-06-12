@@ -1429,13 +1429,13 @@
                 // 3. calendar-right-container
                 echo "<div class='calendar-right-container'>";
                     echo "<div class='flex-container-change'>";
-                        echo "<a href='background-test.php?year=$lastYear&month=$month' class=''>年⬆</a>";
-                        echo "<a href='background-test.php?year=$tomorrowYear&month=$month' class=''>年⬇</a>";
+                        echo "<a href='index.php?year=$lastYear&month=$month' class=''>年⬆</a>";
+                        echo "<a href='index.php?year=$tomorrowYear&month=$month' class=''>年⬇</a>";
                         echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
-                        echo "<a href='background-test.php?year=$prev_year&month=$prev_month' class=''>月⬆</a>";
-                        echo "<a href='background-test.php?year=$next_year&month=$next_month' class=''>月⬇</a>";
+                        echo "<a href='index.php?year=$prev_year&month=$prev_month' class=''>月⬆</a>";
+                        echo "<a href='index.php?year=$next_year&month=$next_month' class=''>月⬇</a>";
                         echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
-                        echo "<a href='background-test.php?year=$nowYear&month=$nowMonth' class=''>今日</a>";
+                        echo "<a href='index.php?year=$nowYear&month=$nowMonth' class=''>今日</a>";
 
                     echo "</div>";
                 echo "</div>";

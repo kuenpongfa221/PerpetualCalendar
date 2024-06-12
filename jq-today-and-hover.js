@@ -32,7 +32,7 @@ $(document).ready(function () {
   // console.log("nowYear: " + nowYear);
   // console.log("nowMonth: " + nowMonth);
   function re_url() {
-    window.location.href = `background-test.php?year=${nowYear}&month=${urlNowMonth}`;
+    window.location.href = `index.php?year=${nowYear}&month=${urlNowMonth}`;
   }
 
   if (!url.searchParams.get("year") || !url.searchParams.get("month")) {
