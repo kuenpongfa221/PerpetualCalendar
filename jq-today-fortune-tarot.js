@@ -58,87 +58,91 @@ $(document).ready(function () {
   let prevTarot = {
     card: "",
     distanceX: "",
-    distanceY: ""
+    distanceY: "",
   };
   //按一下塔羅牌會移動到目標位置，並且settimeout再翻牌
   $(".tarot-image").on("click", function () {
+    try {
+      console.log("try success");
+      console.log(prevTarot);
+      prevTarot.card.remove();
+      $(".daily-tarot").remove();
+      $(".nes-tarot").remove();
+      prevTarot.card.css("transform-origin", "top right");
+      prevTarot.card.css(
+        "transform",
+        `translate(-${prevTarot.distanceX}px, -${prevTarot.distanceY}px) scale(0.5)`
+      );
+    } catch (e) {
+      console.log(e);
+    }
 
-      try{
-        console.log("try success");
-        console.log(prevTarot);
-        prevTarot.card.remove();
-        $(".daily-tarot").remove();
-        $(".nes-tarot").remove();
-        prevTarot.card.css("transform-origin", "top right");       
-        prevTarot.card.css(
-          "transform",
-          `translate(-${prevTarot.distanceX}px, -${prevTarot.distanceY}px) scale(0.5)`
-        );
-      }catch(e){
-        console.log(e);
-      }
+    // if(canFlip){
+    const thisObject = $(this);
+    // console.log(thisObject);
+    const target = $(".target");
+    // console.log("target: " + target);
 
-      // if(canFlip){
-      const thisObject = $(this);
-      // console.log(thisObject);
-      const target = $(".target");
-      // console.log("target: " + target);
+    // 獲取目標物體的位置
+    const targetPosition = target.position();
+    console.log(targetPosition);
+    const thisObjectPosition = this.getBoundingClientRect();
+    console.log(
+      "this.getBoundingClientRect() left: " + this.getBoundingClientRect().left
+    );
+    console.log(
+      "this.getBoundingClientRect() top: " + this.getBoundingClientRect().top
+    );
+    // 計算目標物體位置相對於點擊物體的距離
+    // const distanceX = targetPosition.left - 51 - thisObjectPosition.left;
+    // const distanceY = targetPosition.top - 23 - thisObjectPosition.top;
+    // const distanceX = targetPosition.left - thisObjectPosition.left + 169;
+    // const distanceY = targetPosition.top - thisObjectPosition.top + 41;
+    const distanceX = targetPosition.left - thisObjectPosition.left + 121;
+    const distanceY = targetPosition.top - thisObjectPosition.top + 43;
+    console.log("distanceX: " + distanceX + "  distanceY: " + distanceY);
+    //移動到目標位置
+    thisObject.css("transform", `translate(${distanceX}px, ${distanceY}px)`);
+    // thisObject.css("top", `${targetPosition.top - 10}px`);
+    // thisObject.css("left", `${targetPosition.left}px`);
 
-      // 獲取目標物體的位置
-      const targetPosition = target.position();
-      console.log(targetPosition);
-      const thisObjectPosition = this.getBoundingClientRect();
-      console.log("this.getBoundingClientRect() left: " + this.getBoundingClientRect().left);
-      console.log("this.getBoundingClientRect() top: " + this.getBoundingClientRect().top);
-      // 計算目標物體位置相對於點擊物體的距離
-      // const distanceX = targetPosition.left - 51 - thisObjectPosition.left;
-      // const distanceY = targetPosition.top - 23 - thisObjectPosition.top;
-      const distanceX = targetPosition.left  - thisObjectPosition.left + 169;
-      const distanceY = targetPosition.top - thisObjectPosition.top + 41;
-      console.log("distanceX: " + distanceX + "  distanceY: " + distanceY);
-      //移動到目標位置
-      thisObject.css("transform", `translate(${distanceX}px, ${distanceY}px)`);
-      // thisObject.css("top", `${targetPosition.top - 10}px`);
-      // thisObject.css("left", `${targetPosition.left}px`);
-  
-      //給予thisObject正面的牌
-      // thisObject.children(".tarot-image-front").append(`
-      //   <img src='./images/tarot/wands01.jpg' />
-      // `);
-      const randomCardIndex = Math.floor(Math.random() * 78);
-      // const randomCardIndex = 21;
-      thisObject.children(".tarot-image-front").append(`
+    //給予thisObject正面的牌
+    // thisObject.children(".tarot-image-front").append(`
+    //   <img src='./images/tarot/wands01.jpg' />
+    // `);
+    const randomCardIndex = Math.floor(Math.random() * 78);
+    // const randomCardIndex = 21;
+    thisObject.children(".tarot-image-front").append(`
       <img src='${allTarots[randomCardIndex].img}' />
       `);
-  
-      setTimeout(() => {
-        // thisObject.removeClass("tarot-card-close");
-        thisObject.css("transform-origin", "top right");
-        thisObject.css(
-          "transform",
-          `translate(${distanceX}px, ${distanceY}px) rotateY(180deg) scale(2)`
-        );
-      }, 400);
-  
-      setTimeout(() => {
-        displayCard.append(`
+
+    setTimeout(() => {
+      // thisObject.removeClass("tarot-card-close");
+      thisObject.css("transform-origin", "top right");
+      thisObject.css(
+        "transform",
+        `translate(${distanceX}px, ${distanceY}px) rotateY(180deg) scale(2)`
+      );
+    }, 400);
+
+    setTimeout(() => {
+      displayCard.append(`
           <div class='daily-tarot'><a href='${allTarots[randomCardIndex].daily}' target='_blank'>${allTarots[randomCardIndex].name}</a></div>
         `);
-        displayCard.append(`
+      displayCard.append(`
           <div class='nes-tarot'><a href='${allTarots[randomCardIndex].nes}' target='_blank'>更多牌義</div>
         `);
-      }, 600);
+    }, 600);
 
-      // canFlip = false;
-      prevTarot = {
-          card: $(this),
-          distanceX: distanceX,
-          distanceY: distanceY
-      };
-      // console.log(prevTarot);
+    // canFlip = false;
+    prevTarot = {
+      card: $(this),
+      distanceX: distanceX,
+      distanceY: distanceY,
+    };
+    // console.log(prevTarot);
 
     //if(canflip)的大括號
     // }
-
   });
 });

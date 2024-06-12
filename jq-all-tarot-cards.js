@@ -344,7 +344,7 @@ const allTarots = [
     //聖杯皇后
     img: "./images/tarot/cups13.jpg",
     name: "聖杯皇后",
-    daily: "https://jasiyu.com/daily-tarot-king-of-cups/",
+    daily: "https://jasiyu.com/daily-tarot-queen-of-swords/",
     nes: "https://www.nes-tarot.com/tarot-meanings-court-cups-king.html",
   },
   {
