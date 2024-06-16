@@ -11,8 +11,8 @@ $(document).ready(function () {
 
   //為tarots新增目標框框
   displayCard.append(`
-    <div class="target"></div>
-  `);
+      <div class="target"></div>
+    `);
 
   let top = 0;
   let left = 0;
@@ -21,13 +21,13 @@ $(document).ready(function () {
   // 目前第20行的image會讓版面跑掉，必要的時候先刪掉測試一下
   for (let i = 0; i < 10; i++) {
     tarots.append(`
-    <div class='tarot-image'>
-      <div class='tarot-image-front'></div>
-      <div class='tarot-image-back'>
-        <img src='./images/tarotBack.jpg' alt='tarot'/>
+      <div class='tarot-image'>
+        <div class='tarot-image-front'></div>
+        <div class='tarot-image-back'>
+          <img src='./images/tarotBack.jpg' alt='tarot'/>
+        </div>
       </div>
-    </div>
-    `);
+      `);
 
     // tarots.append(`
     // <div class='tarot-image tarot-card-close'>
@@ -113,8 +113,8 @@ $(document).ready(function () {
     const randomCardIndex = Math.floor(Math.random() * 78);
     // const randomCardIndex = 21;
     thisObject.children(".tarot-image-front").append(`
-      <img src='${allTarots[randomCardIndex].img}' />
-      `);
+        <img src='${allTarots[randomCardIndex].img}' />
+        `);
 
     setTimeout(() => {
       // thisObject.removeClass("tarot-card-close");
@@ -127,11 +127,11 @@ $(document).ready(function () {
 
     setTimeout(() => {
       displayCard.append(`
-          <div class='daily-tarot'><a href='${allTarots[randomCardIndex].daily}' target='_blank'>${allTarots[randomCardIndex].name}</a></div>
-        `);
+            <div class='daily-tarot'><a href='${allTarots[randomCardIndex].daily}' target='_blank'>${allTarots[randomCardIndex].name}</a></div>
+          `);
       displayCard.append(`
-          <div class='nes-tarot'><a href='${allTarots[randomCardIndex].nes}' target='_blank'>更多牌義</div>
-        `);
+            <div class='nes-tarot'><a href='${allTarots[randomCardIndex].nes}' target='_blank'>更多牌義</div>
+          `);
     }, 600);
 
     // canFlip = false;
