@@ -101,10 +101,12 @@ $(document).ready(function () {
       const thisObjectPosition = this.getBoundingClientRect();
       // console.log(this.getBoundingClientRect());
       // 計算目標物體位置相對於點擊物體的距離
+      // const distanceX = targetPosition.left - 51 - thisObjectPosition.left + thisObjectLeft;
+      // const distanceY = targetPosition.top - 23 - thisObjectPosition.top + thisObjectTop + 8;
       const distanceX =
-        targetPosition.left - 51 - thisObjectPosition.left + thisObjectLeft;
+        targetPosition.left - thisObjectPosition.left + thisObjectLeft + 121;
       const distanceY =
-        targetPosition.top - 23 - thisObjectPosition.top + thisObjectTop + 8;
+        targetPosition.top - thisObjectPosition.top + thisObjectTop + 47;
       // console.log("distanceX: " + distanceX + "  distanceY: " + distanceY);
       //移動到目標位置
       thisObject.css("transform", `translate(${distanceX}px, ${distanceY}px)`);

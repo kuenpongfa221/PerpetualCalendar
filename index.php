@@ -76,7 +76,12 @@
         .mask-container-hover{
             /* box-shadow: 0px 25px 60px rgb(72, 91, 105); */
             /* box-shadow: 0px 25px 60px rgb(232, 232, 232, .8); */
-            box-shadow: 0px 25px 60px rgb(216, 216, 216, .8);
+            /* box-shadow: 0px 25px 60px rgb(216, 216, 216, .8); */
+            /* box-shadow: 0px 25px 60px rgb(255, 0, 0, .8); */
+            box-shadow: 0px 25px 60px rgb(255, 255, 0, .6);
+            /* box-shadow: 0px 25px 60px rgb(240, 230, 140, .8); */
+            /* box-shadow: 0px 25px 60px RGB(187, 150, 98, .8); */
+            /* box-shadow: 0px 25px 60px rgb(0, 0, 255, .8); */
         }
         /* 1. aside-left-container */
         .aside-left-container{
@@ -584,11 +589,14 @@
                 case '多雲時陰短暫陣雨':
                     wXImg = './images/09.svg';
                     break;
-                case '多雲短暫陣雨或雷雨':
-                    wXImg = './images/15.svg';
+                case '陰時多雲短暫陣雨':
+                    wXImg = './images/10.svg';
                     break;
                 case '陰短暫陣雨':
                     wXImg = './images/11.svg';
+                    break;
+                case '多雲短暫陣雨或雷雨':
+                    wXImg = './images/15.svg';
                     break;
                 case '多雲時陰短暫陣雨或雷雨':
                     wXImg = './images/16.svg';
@@ -1460,7 +1468,6 @@
 
 <script src='jq-blur-background.js'></script>
 <script src="jq-today-and-hover.js"></script>
-<script src="jq-text-to-input-test.js"></script>
 <script src="jq-all-tarot-cards.js"></script>
 <script src="jq-today-fortune-tarot.js"></script>
 <script src="jq-deal-cards.js"></script>
