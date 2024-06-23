@@ -96,9 +96,17 @@ $(document).ready(function () {
     // 計算目標物體位置相對於點擊物體的距離
     // const distanceX = targetPosition.left - 51 - thisObjectPosition.left;
     // const distanceY = targetPosition.top - 23 - thisObjectPosition.top;
-    // const distanceX = targetPosition.left - thisObjectPosition.left + 169;
-    // const distanceY = targetPosition.top - thisObjectPosition.top + 41;
-    const distanceX = targetPosition.left - thisObjectPosition.left + 121;
+
+    //家裡桌電 100%
+    // const distanceX = targetPosition.left - thisObjectPosition.left + 147;
+    // const distanceY = targetPosition.top - thisObjectPosition.top + 43;
+
+    //學校電腦 100%
+    // const distanceX = targetPosition.left - thisObjectPosition.left + 121;
+    // const distanceY = targetPosition.top - thisObjectPosition.top + 43;
+
+    //筆電縮放80%
+    const distanceX = targetPosition.left - thisObjectPosition.left + 10;
     const distanceY = targetPosition.top - thisObjectPosition.top + 43;
     console.log("distanceX: " + distanceX + "  distanceY: " + distanceY);
     //移動到目標位置
