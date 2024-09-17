@@ -1202,10 +1202,10 @@
 
 
     echo "<div class='todolist-container'>";
-    echo "<h3 class='todolist-title'>&ensp;今日代辦事項:</h3>";
-    echo "<div class='todolist-row'>1. <div class='todolist-item-1'></div></div>";
-    echo "<div class='todolist-row'>2. <div class='todolist-item-2'>練習sql</div></div>";
-    echo "<div class='todolist-row'>3. <div class='todolist-item-3'>學習ps</div></div>";
+    echo "<h3 class='todolist-title'>&ensp;今日待辦事項:</h3>";
+    echo "<div class='todolist-row'>1. <div class='todolist-item-1' contenteditable></div></div>";
+    echo "<div class='todolist-row'>2. <div class='todolist-item-2' contenteditable>練習sql</div></div>";
+    echo "<div class='todolist-row'>3. <div class='todolist-item-3' contenteditable>學習ps</div></div>";
     //todolist-container的div
     echo "</div>";
     // aside-left-container 的 div
