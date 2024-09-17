@@ -611,6 +611,8 @@
 
             //串接API裡面太長串，拉出來做一個function
             function afterGetAPI(res) {
+                // console.log("afterGetAPI: " + res);
+                console.log(res);
                 const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
                 const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
                 const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
@@ -633,6 +635,9 @@
                         break;
                     case '陰天':
                         wXImg = './images/07.svg';
+                        break;
+                    case '多雲短暫陣雨':
+                        wXImg = "./images/08.svg";
                         break;
                     case '多雲時陰短暫陣雨':
                         wXImg = './images/09.svg';
@@ -693,7 +698,7 @@
                 if (hour >= 11 && hour < 18) {
                     // 時間是 12. ~ 18.
                     $.get(
-                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T12%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
+                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T18%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
 
                         function(res, status) {
                             afterGetAPI(res);
@@ -757,7 +762,7 @@
                 } else if (hour >= 18 && hour <= 23) {
                     // 時間是 18. ~ 6.
                     $.get(
-                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T18%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
+                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T18%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
                         function(res, status) {
                             afterGetAPI(res);
                             // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
@@ -826,7 +831,7 @@
                     //在23:25的時候，還是 18:00~06:00
                     // 時間是 0. ~ 6.
                     $.get(
-                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${tomorrowDate}T00%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
+                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${tomorrowDate}T00%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
                         function(res, status) {
                             console.log("ajax 是成功的");
                             console.log("tomorrow Date: " + tomorrowDate);
@@ -893,7 +898,7 @@
                 } else {
                     // 時間是 6. ~ 18.
                     $.get(
-                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T06%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
+                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T06%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
 
                         function(res, status) {
                             afterGetAPI(res);
