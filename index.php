@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="#">
     <title>萬年曆作業</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         /*請在這裹撰寫你的CSS*/
         * {
-            box-sizing: border-box;
+            /* box-sizing: border-box; */
             font-family: '微軟正黑體';
             margin: 0;
             padding: 0;
@@ -61,32 +62,14 @@
         }
 
         .mask-container {
-            width: 1480px;
-            height: 100%;
             background-image: linear-gradient(rgba(255, 255, 255, 0.5),
                     rgba(255, 255, 255, 0.5));
-            border-radius: 10px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            /* box-shadow: 0px 0px 100px rgb(72, 91, 105); */
-            position: absolute;
-            z-index: 2;
-            overflow: hidden;
-            transition: all 2s ease;
+
         }
 
         .mask-container-hover {
             box-shadow: 0px 25px 60px rgb(255, 255, 255, .8);
-            /* box-shadow: 0px 25px 60px rgb(72, 91, 105); */
-            /* box-shadow: 0px 25px 60px rgb(232, 232, 232, .8); */
-            /* box-shadow: 0px 25px 60px rgb(216, 216, 216, .8); */
-            /* box-shadow: 0px 25px 60px rgb(255, 0, 0, .8); */
-            /*box-shadow: 0px 25px 60px rgb(255, 255, 0, .6);*/
-            /* box-shadow: 0px 25px 60px rgb(240, 230, 140, .8); */
-            /* box-shadow: 0px 25px 60px RGB(187, 150, 98, .8); */
-            /* box-shadow: 0px 25px 60px rgb(0, 0, 255, .8); */
+
         }
 
         /* 1. aside-left-container */
@@ -166,6 +149,7 @@
         .todolist-container {
             width: 100%;
             height: 27%;
+            min-height: 300px;
         }
 
         .todolist-container>.todolist-title {
@@ -337,6 +321,7 @@
         /* 陰曆row row-lunar */
         .row-lunar {
             height: 55%;
+            margin-top: 24px;
         }
 
         /* 3. calendar-right-container */
@@ -535,7 +520,21 @@
             border: 1px solid black;
             border-radius: 10px;
         }
+
+        @media (max-width: 600px) {
+            .year-month-deadline-container>.chinese-year-month {
+                font-size: 1rem;
+                font-weight: bold;
+            }
+
+            .row-lunar {
+                height: 55%;
+                margin-top: 0px;
+            }
+        }
     </style>
+
+
 </head>
 
 <body>
@@ -640,6 +639,9 @@
                     case '陰天':
                         wXImg = './images/07.svg';
                         break;
+                    case '多雲短暫陣雨':
+                        wXImg = './images/08.svg';
+                        break;
                     case '多雲時陰短暫陣雨':
                         wXImg = './images/09.svg';
                         break;
@@ -702,132 +704,18 @@
                 if (hour >= 11 && hour < 18) {
                     // 時間是 12. ~ 18.
                     $.get(
-                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T12%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
+                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T12%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
 
                         function(res, status) {
                             afterGetAPI(res);
-                            // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
-                            // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                            // // console.log(wX);
-                            // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
-                            // const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
-                            // //在if外面設wXImgh才不會被 local variable吃掉!!
-                            // let wXImg;
-                            // console.log(wX);
-                            // switch(wX){
-                            //     case '多雲時晴':
-                            //         wXImg = './images/03.svg';
-                            //         break;
-                            //     case '多雲':
-                            //         wXImg = './images/04.svg';
-                            //         break;
-                            //     case '多雲時陰':
-                            //         wXImg = './images/05.svg';
-                            //         break;
-                            //     case '陰時多雲':
-                            //         wXImg = './images/06.svg';
-                            //         break;
-                            //     case '陰天':
-                            //         wXImg = './images/07.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨':
-                            //         wXImg = './images/08.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨':
-                            //         wXImg = './images/09.svg';
-                            //         break;
-                            //     case '陰短暫陣雨':
-                            //         wXImg = './images/11.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/15.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨或雷雨':
-                            //         wXImg = './images/16.svg';
-                            //         break;
-                            //     case '陰時多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/17.svg';
-                            //         break;
-                            //     case '陰短暫陣雨或雷雨':
-                            //         wXImg = './images/18.svg';
-                            //         break;
-                            //     case '多雲午後短暫雷陣雨':
-                            //         wXImg = './images/22.svg';
-                            //         break;
-                            //     default:
-                            //         wXImg = './images/weatherToBeAdd.png';
-                            //         break;
-                            // }
-                            // $(".weather-icon-img").attr("src", wXImg);
-                            // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
-                            // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
                         }
                     );
                 } else if (hour >= 18 && hour <= 23) {
                     // 時間是 18. ~ 6.
                     $.get(
-                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T18%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
+                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T18%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
                         function(res, status) {
                             afterGetAPI(res);
-                            // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
-                            // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                            // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
-                            // const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
-                            // //在if外面設wXImgh才不會被 local variable吃掉!!
-                            // let wXImg;
-                            // console.log(wX);
-                            // switch(wX){
-                            //     case '多雲時晴':
-                            //         wXImg = './images/03.svg';
-                            //         break;
-                            //     case '多雲':
-                            //         wXImg = './images/04.svg';
-                            //         break;
-                            //     case '多雲時陰':
-                            //         wXImg = './images/05.svg';
-                            //         break;
-                            //     case '陰時多雲':
-                            //         wXImg = './images/06.svg';
-                            //         break;
-                            //     case '陰天':
-                            //         wXImg = './images/07.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨':
-                            //         wXImg = './images/08.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨':
-                            //         wXImg = './images/09.svg';
-                            //         break;
-                            //     case '陰短暫陣雨':
-                            //         wXImg = './images/11.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/15.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨或雷雨':
-                            //         wXImg = './images/16.svg';
-                            //         break;
-                            //     case '陰時多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/17.svg';
-                            //         break;
-                            //     case '陰短暫陣雨或雷雨':
-                            //         wXImg = './images/18.svg';
-                            //         break;
-                            //     case '多雲午後短暫雷陣雨':
-                            //         wXImg = './images/22.svg';
-                            //         break;
-                            //     default:
-                            //         wXImg = './images/weatherToBeAdd.png';
-                            //         break;
-                            // }
-                            // $(".weather-icon-img").attr("src", wXImg);
-                            // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
-                            // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
-                            //         console.log(res);
-                            //         console.log(wX);
-                            //         console.log(minT);
-                            //         console.log(maxT);
-                            //         console.log(pop12h);
                         }
                     )
                     // } else if(hour == 23){
@@ -835,139 +723,21 @@
                     //在23:25的時候，還是 18:00~06:00
                     // 時間是 0. ~ 6.
                     $.get(
-                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${tomorrowDate}T00%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
+                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${tomorrowDate}T00%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
                         function(res, status) {
                             console.log("ajax 是成功的");
                             console.log("tomorrow Date: " + tomorrowDate);
 
                             afterGetAPI(res);
-                            // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
-                            // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                            // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
-                            // const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
-                            // //在if外面設wXImgh才不會被 local variable吃掉!!
-                            // let wXImg;
-                            // console.log(wX);
-                            // switch(wX){
-                            //     case '多雲時晴':
-                            //         wXImg = './images/03.svg';
-                            //         break;
-                            //     case '多雲':
-                            //         wXImg = './images/04.svg';
-                            //         break;
-                            //     case '多雲時陰':
-                            //         wXImg = './images/05.svg';
-                            //         break;
-                            //     case '陰天':
-                            //         wXImg = './images/07.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨':
-                            //         wXImg = './images/08.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨':
-                            //         wXImg = './images/09.svg';
-                            //         break;
-                            //     case '陰短暫陣雨':
-                            //         wXImg = './images/11.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/15.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨或雷雨':
-                            //         wXImg = './images/16.svg';
-                            //         break;
-                            //     case '陰時多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/17.svg';
-                            //         break;
-                            //     case '陰短暫陣雨或雷雨':
-                            //         wXImg = './images/18.svg';
-                            //         break;
-                            //     case '多雲午後短暫雷陣雨':
-                            //         wXImg = './images/22.svg';
-                            //         break;
-                            //     default:
-                            //         wXImg = './images/weatherToBeAdd.png';
-                            //         break;
-                            // }
-                            // $(".weather-icon-img").attr("src", wXImg);
-                            // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
-                            // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
-                            //         console.log(res);
-                            //         console.log(wX);
-                            //         console.log(minT);
-                            //         console.log(maxT);
-                            //         console.log(pop12h);
                         }
                     )
                 } else {
                     // 時間是 6. ~ 18.
                     $.get(
-                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-BACBA6E9-0337-42BA-BE62-F5BA838535AE&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T06%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
+                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T06%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
 
                         function(res, status) {
                             afterGetAPI(res);
-                            // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
-                            // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                            // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
-                            // const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
-                            // //在if外面設wXImgh才不會被 local variable吃掉!!
-                            // let wXImg;
-                            // // console.log(wX);
-                            // switch(wX){
-                            //     case '多雲':
-                            //         wXImg = './images/04.svg';
-                            //         break;
-                            //     case '多雲':
-                            //         wXImg = './images/04.svg';
-                            //         break;
-                            //     case '多雲時陰':
-                            //         wXImg = './images/05.svg';
-                            //         break;
-                            //     case '陰時多雲':
-                            //         wXImg = './images/06.svg';
-                            //         break;
-                            //     case '陰天':
-                            //         wXImg = './images/07.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨':
-                            //         wXImg = './images/08.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨':
-                            //         wXImg = './images/09.svg';
-                            //         break;
-                            //     case '陰短暫陣雨':
-                            //         wXImg = './images/11.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/15.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨或雷雨':
-                            //         wXImg = './images/16.svg';
-                            //         break;
-                            //     case '陰時多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/17.svg';
-                            //         break;
-                            //     case '陰短暫陣雨或雷雨':
-                            //         wXImg = './images/18.svg';
-                            //         break;
-                            //     case '多雲午後短暫雷陣雨':
-                            //         wXImg = './images/22.svg';
-                            //         break;
-                            //     default:
-                            //         wXImg = './images/weatherToBeAdd.png';
-                            //         break;
-                            // }
-                            // $(".weather-icon-img").attr("src", wXImg);
-                            // // $(".weather-icon-img").attr('width', '200px');
-                            // // $(".weather-icon-img").attr('height', '150px');
-                            // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
-                            // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
-                            //     //     console.log(res);
-                            //     //     console.log(wX);
-                            //     //     console.log(minT);
-                            //     //     console.log(maxT);
-                            //     //     console.log(pop12h);
-                            //     // console.log(res.records);
                         }
                     );
                 }
@@ -1161,11 +931,14 @@
     ?>
 
     <?php
-    echo "<div class='body-container'>";
+    // echo "<div class='body-container'>";
+    echo "<div class='container'>";
     echo "<canvas id='canvas'></canvas>";
-    echo "<div class='mask-container'>";
+    // echo "<div class='mask-container'>";
+    echo "<div class='row mask-container'>";
     // 1. aside-left-container : 要包date-time-container、weather-container、todolist-container
-    echo "<div class='aside-left-container'>";
+    // echo "<div class='aside-left-container'>";
+    echo "<div class='col-12 col-md-3'>";
     echo "<div class='date-time-container'>";
     echo "<div class='date-row'>";
     echo "<div class='date-row-data'>$nowYear/$nowMonth/$nowDay</div>";
@@ -1212,7 +985,8 @@
     echo "</div>";
 
     // 2. calendar-container
-    echo "<div class='calendar-container'>";
+    // echo "<div class='calendar-container'>";
+    echo "<div class='col-10 col-md-7'>";
 
     // echo "<div class='flex-container-change'>";
     //     echo "<a href='index-test.php?year=$lastYear&month=$month' class=''>去年</a>";
@@ -1485,7 +1259,8 @@
     echo "</div>";
 
     // 3. calendar-right-container
-    echo "<div class='calendar-right-container'>";
+    // echo "<div class='calendar-right-container'>";
+    echo "<div class='col-2 col-md-2'>";
     echo "<div class='flex-container-change'>";
     echo "<a href='index.php?year=$lastYear&month=$month' class=''>年⬆</a>";
     echo "<a href='index.php?year=$tomorrowYear&month=$month' class=''>年⬇</a>";
@@ -1498,17 +1273,7 @@
     echo "</div>";
     echo "</div>";
 
-    // 4. aside-right-container
-    echo "<div class='aside-right-container'>";
-    echo "<div class='aside-right-content-container'>";
-    echo "<div class='today-fortune'>本日運勢</div>";
-    echo "<div class='display-card'></div>";
-    echo "<div class='tarots'></div>";
-    echo "<div class='deal-container'><button class='deal'>重新發牌</button></div>";
-    // aside-right-content-container 的 div
-    echo "</div>";
-    // aside-right-container 的 div
-    echo "</div>";
+
 
     // mask-container的div
     echo "</div>";
