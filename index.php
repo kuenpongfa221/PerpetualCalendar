@@ -731,7 +731,7 @@
                 if (hour >= 11 && hour < 18) {
                     // 時間是 12. ~ 18.
                     $.get(
-                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T12%3A00%3A00&dataTime=${todayDate}T18%3A00%3A00`,
+                        `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&format=JSON&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T18%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
 
                         function(res, status) {
                             afterGetAPI(res);
