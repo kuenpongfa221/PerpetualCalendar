@@ -1296,6 +1296,7 @@
 
     <script src='jq-blur-background.js'></script>
     <script src="jq-today-and-hover.js"></script>
+    <script src="jq-text-to-input.js"></script>
     <script src="jq-all-tarot-cards.js"></script>
     <script src="jq-today-fortune-tarot.js"></script>
     <script src="jq-deal-cards.js"></script>
