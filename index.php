@@ -6,12 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="#">
+<<<<<<< HEAD
     <title>萬年曆作業</title>
+=======
+    <title>萬年曆</title>
+    <link rel="icon" href="./images/title/calendar.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+>>>>>>> test
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <style>
         /*請在這裹撰寫你的CSS*/
         * {
+<<<<<<< HEAD
             box-sizing: border-box;
+=======
+            /* box-sizing: border-box; */
+>>>>>>> test
             font-family: '微軟正黑體';
             margin: 0;
             padding: 0;
@@ -61,6 +71,7 @@
         }
 
         .mask-container {
+<<<<<<< HEAD
             width: 1480px;
             height: 100%;
             background-image: linear-gradient(rgba(255, 255, 255, 0.5),
@@ -81,6 +92,16 @@
             /* box-shadow: 0px 25px 60px rgb(72, 91, 105); */
             /* box-shadow: 0px 25px 60px rgb(232, 232, 232, .8); */
             box-shadow: 0px 25px 60px rgb(216, 216, 216, .8);
+=======
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5),
+                    rgba(255, 255, 255, 0.5));
+
+        }
+
+        .mask-container-hover {
+            box-shadow: 0px 25px 60px rgb(255, 255, 255, .8);
+
+>>>>>>> test
         }
 
         /* 1. aside-left-container */
@@ -160,6 +181,7 @@
         .todolist-container {
             width: 100%;
             height: 27%;
+            min-height: 300px;
         }
 
         .todolist-container>.todolist-title {
@@ -331,6 +353,7 @@
         /* 陰曆row row-lunar */
         .row-lunar {
             height: 55%;
+            margin-top: 24px;
         }
 
         /* 3. calendar-right-container */
@@ -529,7 +552,51 @@
             border: 1px solid black;
             border-radius: 10px;
         }
+<<<<<<< HEAD
     </style>
+=======
+
+        @media (max-width: 600px) {
+            .year-month-deadline-container {
+                width: 110%;
+            }
+
+            .year-month-deadline-container>.chinese-year-month {
+                font-size: 1rem;
+                font-weight: bold;
+            }
+
+            .flex-container-calendar {
+                width: 110%;
+            }
+
+            .item {
+                min-height: 150px;
+            }
+
+            .item-weekend {
+                min-height: 150px;
+            }
+
+            .row-solar {
+                text-align: center;
+            }
+
+            .row-lunar {
+                height: 55%;
+                margin-top: 0px;
+                text-align: center
+            }
+
+            .today-solor-color {
+                width: auto;
+                font-size: 1rem;
+            }
+        }
+    </style>
+
+
+>>>>>>> test
 </head>
 
 <body>
@@ -611,8 +678,11 @@
 
             //串接API裡面太長串，拉出來做一個function
             function afterGetAPI(res) {
+<<<<<<< HEAD
                 // console.log("afterGetAPI: " + res);
                 console.log(res);
+=======
+>>>>>>> test
                 const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
                 const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
                 const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
@@ -637,17 +707,32 @@
                         wXImg = './images/07.svg';
                         break;
                     case '多雲短暫陣雨':
+<<<<<<< HEAD
                         wXImg = "./images/08.svg";
+=======
+                        wXImg = './images/08.svg';
+>>>>>>> test
                         break;
                     case '多雲時陰短暫陣雨':
                         wXImg = './images/09.svg';
                         break;
+<<<<<<< HEAD
                     case '多雲短暫陣雨或雷雨':
                         wXImg = './images/15.svg';
+=======
+                    case '陰時多雲短暫陣雨':
+                        wXImg = './images/10.svg';
+>>>>>>> test
                         break;
                     case '陰短暫陣雨':
                         wXImg = './images/11.svg';
                         break;
+<<<<<<< HEAD
+=======
+                    case '多雲短暫陣雨或雷雨':
+                        wXImg = './images/15.svg';
+                        break;
+>>>>>>> test
                     case '多雲時陰短暫陣雨或雷雨':
                         wXImg = './images/16.svg';
                         break;
@@ -702,6 +787,7 @@
 
                         function(res, status) {
                             afterGetAPI(res);
+<<<<<<< HEAD
                             // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
                             // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
                             // // console.log(wX);
@@ -757,6 +843,8 @@
                             // $(".weather-icon-img").attr("src", wXImg);
                             // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
                             // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
+=======
+>>>>>>> test
                         }
                     );
                 } else if (hour >= 18 && hour <= 23) {
@@ -765,6 +853,7 @@
                         `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWA-B536DF1C-1597-4E17-A48C-42342C692BDC&locationName=%E6%B3%B0%E5%B1%B1%E5%8D%80&elementName=MinT,MaxT,PoP12h,Wx&startTime=${todayDate}T18%3A00%3A00&dataTime=${tomorrowDate}T06%3A00%3A00`,
                         function(res, status) {
                             afterGetAPI(res);
+<<<<<<< HEAD
                             // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
                             // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
                             // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
@@ -824,6 +913,8 @@
                             //         console.log(minT);
                             //         console.log(maxT);
                             //         console.log(pop12h);
+=======
+>>>>>>> test
                         }
                     )
                     // } else if(hour == 23){
@@ -837,62 +928,6 @@
                             console.log("tomorrow Date: " + tomorrowDate);
 
                             afterGetAPI(res);
-                            // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
-                            // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                            // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
-                            // const maxT = res.records.locations[0].location[0].weatherElement[3].time[0].elementValue[0].value;
-                            // //在if外面設wXImgh才不會被 local variable吃掉!!
-                            // let wXImg;
-                            // console.log(wX);
-                            // switch(wX){
-                            //     case '多雲時晴':
-                            //         wXImg = './images/03.svg';
-                            //         break;
-                            //     case '多雲':
-                            //         wXImg = './images/04.svg';
-                            //         break;
-                            //     case '多雲時陰':
-                            //         wXImg = './images/05.svg';
-                            //         break;
-                            //     case '陰天':
-                            //         wXImg = './images/07.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨':
-                            //         wXImg = './images/08.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨':
-                            //         wXImg = './images/09.svg';
-                            //         break;
-                            //     case '陰短暫陣雨':
-                            //         wXImg = './images/11.svg';
-                            //         break;
-                            //     case '多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/15.svg';
-                            //         break;
-                            //     case '多雲時陰短暫陣雨或雷雨':
-                            //         wXImg = './images/16.svg';
-                            //         break;
-                            //     case '陰時多雲短暫陣雨或雷雨':
-                            //         wXImg = './images/17.svg';
-                            //         break;
-                            //     case '陰短暫陣雨或雷雨':
-                            //         wXImg = './images/18.svg';
-                            //         break;
-                            //     case '多雲午後短暫雷陣雨':
-                            //         wXImg = './images/22.svg';
-                            //         break;
-                            //     default:
-                            //         wXImg = './images/weatherToBeAdd.png';
-                            //         break;
-                            // }
-                            // $(".weather-icon-img").attr("src", wXImg);
-                            // $(".weather-minT-maxT").text(`${minT}度~${maxT}度`);
-                            // $(".weather-pop12h").text(`降雨機率:${pop12h}`);
-                            //         console.log(res);
-                            //         console.log(wX);
-                            //         console.log(minT);
-                            //         console.log(maxT);
-                            //         console.log(pop12h);
                         }
                     )
                 } else {
@@ -902,6 +937,7 @@
 
                         function(res, status) {
                             afterGetAPI(res);
+<<<<<<< HEAD
                             // const pop12h = res.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
                             // const wX = res.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
                             // const minT = res.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
@@ -964,6 +1000,8 @@
                             //     //     console.log(maxT);
                             //     //     console.log(pop12h);
                             //     // console.log(res.records);
+=======
+>>>>>>> test
                         }
                     );
                 }
@@ -1025,14 +1063,20 @@
             "20" => "郵政節",
             "21" => "氣象節",
             "25" => "美術節",
+<<<<<<< HEAD
             "26" => "廣播電視節",
+=======
+>>>>>>> test
             "29" => "青年節"
         ],
         "4" => [
             "1" => "主計節",
             "4" => "兒童節",
             "5" => "音樂節",
+<<<<<<< HEAD
             "7" => "言論自由日",
+=======
+>>>>>>> test
             "28" => "工殤日",
         ],
         "5" => [
@@ -1040,34 +1084,51 @@
             "4" => "文藝節",
             "5" => "舞蹈節",
             "12" => "護士節",
+<<<<<<< HEAD
             "15" => "兒童安全日",
+=======
+>>>>>>> test
         ],
         "6" => [
             "3" => "禁煙節",
             "5" => "環境日",
             "6" => "工程師節",
+<<<<<<< HEAD
             "8" => "世界海洋日",
             "9" => "鐵路節",
             "15" => "警察節",
             "23" => "公共服務日",
+=======
+            "9" => "鐵路節",
+            "15" => "警察節",
+>>>>>>> test
             "30" => "會計師節"
         ],
         "7" => [
             "1" => "漁民節",
             "7" => "合作節",
             '11' => '航海節',
+<<<<<<< HEAD
             '15' => '解嚴紀念日',
         ],
         "8" => [
             "8" => "父親節",
             "27" => "鄭成功紀念日",
+=======
+        ],
+        "8" => [
+            "8" => "父親節",
+>>>>>>> test
         ],
         "9" => [
             "1" => "記者節",
             "3" => "軍人節",
+<<<<<<< HEAD
             "8" => "物理治療師節",
             "9" => "國民體育日",
             "21" => "國家防央日",
+=======
+>>>>>>> test
             "28" => "教師節",
         ],
         "10" => [
@@ -1075,20 +1136,29 @@
             "10" => "國慶日",
             "20" => "廚師節",
             "21" => "華僑節",
+<<<<<<< HEAD
             "25" => "臺灣光復節",
             "27" => "職能治療師節",
+=======
+>>>>>>> test
             "31" => "榮民節"
         ],
         "11" => [
             "1" => "商人節",
             "11" => "工業節",
+<<<<<<< HEAD
             "12" => "國父紀念日",
+=======
+>>>>>>> test
             "21" => "防空節"
         ],
         "12" => [
             "10" => "人權節",
             "18" => "移民節",
+<<<<<<< HEAD
             "25" => "行憲紀念日",
+=======
+>>>>>>> test
             "27" => "建築師節",
             "28" => "電信節",
         ]
@@ -1157,11 +1227,22 @@
     ?>
 
     <?php
+<<<<<<< HEAD
     echo "<div class='body-container'>";
     echo "<canvas id='canvas'></canvas>";
     echo "<div class='mask-container'>";
     // 1. aside-left-container : 要包date-time-container、weather-container、todolist-container
     echo "<div class='aside-left-container'>";
+=======
+    // echo "<div class='body-container'>";
+    echo "<div class='container'>";
+    echo "<canvas id='canvas'></canvas>";
+    // echo "<div class='mask-container'>";
+    echo "<div class='row mask-container'>";
+    // 1. aside-left-container : 要包date-time-container、weather-container、todolist-container
+    // echo "<div class='aside-left-container'>";
+    echo "<div class='col-12 col-md-3'>";
+>>>>>>> test
     echo "<div class='date-time-container'>";
     echo "<div class='date-row'>";
     echo "<div class='date-row-data'>$nowYear/$nowMonth/$nowDay</div>";
@@ -1198,17 +1279,29 @@
 
 
     echo "<div class='todolist-container'>";
+<<<<<<< HEAD
     echo "<h3 class='todolist-title'>&ensp;今日代辦事項:</h3>";
     echo "<div class='todolist-row'>1. <div class='todolist-item-1'></div></div>";
     echo "<div class='todolist-row'>2. <div class='todolist-item-2'>練習sql</div></div>";
     echo "<div class='todolist-row'>3. <div class='todolist-item-3'>學習ps</div></div>";
+=======
+    echo "<h3 class='todolist-title'>&ensp;今日待辦事項:</h3>";
+    echo "<div class='todolist-row'>1. <div class='todolist-item-1' contenteditable></div></div>";
+    echo "<div class='todolist-row'>2. <div class='todolist-item-2' contenteditable>練習sql</div></div>";
+    echo "<div class='todolist-row'>3. <div class='todolist-item-3' contenteditable>學習ps</div></div>";
+>>>>>>> test
     //todolist-container的div
     echo "</div>";
     // aside-left-container 的 div
     echo "</div>";
 
     // 2. calendar-container
+<<<<<<< HEAD
     echo "<div class='calendar-container'>";
+=======
+    // echo "<div class='calendar-container'>";
+    echo "<div class='col-10 col-md-7'>";
+>>>>>>> test
 
     // echo "<div class='flex-container-change'>";
     //     echo "<a href='index-test.php?year=$lastYear&month=$month' class=''>去年</a>";
@@ -1481,6 +1574,7 @@
     echo "</div>";
 
     // 3. calendar-right-container
+<<<<<<< HEAD
     echo "<div class='calendar-right-container'>";
     echo "<div class='flex-container-change'>";
     echo "<a href='background-test.php?year=$lastYear&month=$month' class=''>年⬆</a>";
@@ -1490,10 +1584,23 @@
     echo "<a href='background-test.php?year=$next_year&month=$next_month' class=''>月⬇</a>";
     echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
     echo "<a href='background-test.php?year=$nowYear&month=$nowMonth' class=''>今日</a>";
+=======
+    // echo "<div class='calendar-right-container'>";
+    echo "<div class='col-2 col-md-2'>";
+    echo "<div class='flex-container-change'>";
+    echo "<a href='index.php?year=$lastYear&month=$month' class=''>年⬆</a>";
+    echo "<a href='index.php?year=$tomorrowYear&month=$month' class=''>年⬇</a>";
+    echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
+    echo "<a href='index.php?year=$prev_year&month=$prev_month' class=''>月⬆</a>";
+    echo "<a href='index.php?year=$next_year&month=$next_month' class=''>月⬇</a>";
+    echo "&ensp;&ensp;&ensp;&ensp;&ensp;";
+    echo "<a href='index.php?year=$nowYear&month=$nowMonth' class=''>今日</a>";
+>>>>>>> test
 
     echo "</div>";
     echo "</div>";
 
+<<<<<<< HEAD
     // 4. aside-right-container
     echo "<div class='aside-right-container'>";
     echo "<div class='aside-right-content-container'>";
@@ -1505,6 +1612,9 @@
     echo "</div>";
     // aside-right-container 的 div
     echo "</div>";
+=======
+
+>>>>>>> test
 
     // mask-container的div
     echo "</div>";
